@@ -19,6 +19,7 @@ namespace Blackjack.Controller
             while (Game.IsGameOver() == false)
             {
                 GameView.RenderPlayersHands();
+                GameView.RenderGameActionChoices();
             }
         }
     }
