@@ -24,5 +24,14 @@ namespace BlackjackTest.Controller
             sut.PlayGame();
             mockBlackjackGame.Verify(game => game.DealNewHand(), Times.Once());
         }
+
+        [Fact]
+        public void PlayGame_ShouldCallIsGameOverOnceIfReturnsTrue()
+        {
+            mockBlackjackGame.Setup(game => game.IsGameOver())
+                .Returns(true);
+            sut.PlayGame();
+            mockBlackjackGame.Verify(game => game.IsGameOver(), Times.Once());
+        }
     }
 }

@@ -7,5 +7,6 @@ namespace Blackjack.Model
     public interface IBlackjackGame
     {
         void DealNewHand();
+        bool IsGameOver();
     }
 }
