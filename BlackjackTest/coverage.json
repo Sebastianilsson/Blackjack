@@ -1,0 +1,78 @@
+{
+  "Blackjack.dll": {
+    "C:\\Users\\nilss\\2DV610\\Blackjack\\Blackjack\\Controller\\MainController.cs": {
+      "Blackjack.Controller.MainController": {
+        "Blackjack.Controller.IGameController Blackjack.Controller.MainController::get_GameController()": {
+          "Lines": {
+            "9": 8
+          },
+          "Branches": []
+        },
+        "Blackjack.View.IGameView Blackjack.Controller.MainController::get_GameView()": {
+          "Lines": {
+            "10": 17
+          },
+          "Branches": []
+        },
+        "System.Void Blackjack.Controller.MainController::RunGame()": {
+          "Lines": {
+            "17": 5,
+            "18": 5,
+            "19": 5,
+            "22": 3,
+            "23": 3,
+            "25": 1,
+            "26": 1,
+            "28": 1,
+            "29": 1,
+            "31": 5
+          },
+          "Branches": [
+            {
+              "Line": 19,
+              "Offset": 28,
+              "EndOffset": 47,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 3
+            },
+            {
+              "Line": 19,
+              "Offset": 28,
+              "EndOffset": 61,
+              "Path": 2,
+              "Ordinal": 2,
+              "Hits": 1
+            },
+            {
+              "Line": 19,
+              "Offset": 28,
+              "EndOffset": 75,
+              "Path": 3,
+              "Ordinal": 3,
+              "Hits": 1
+            },
+            {
+              "Line": 19,
+              "Offset": 28,
+              "EndOffset": 89,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 5
+            }
+          ]
+        },
+        "System.Void Blackjack.Controller.MainController::.ctor(Blackjack.Controller.IGameController,Blackjack.View.IGameView)": {
+          "Lines": {
+            "11": 5,
+            "12": 5,
+            "13": 5,
+            "14": 5,
+            "15": 5
+          },
+          "Branches": []
+        }
+      }
+    }
+  }
+}
