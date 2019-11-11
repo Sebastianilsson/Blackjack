@@ -17,27 +17,13 @@ namespace BlackjackTest.Controller
         {
             mockBlackjackGame = new Mock<IBlackjackGame>();
             sut = new GameController(mockBlackjackGame.Object);
-            mockBlackjackGame.Setup(game => game.IsGameOver())
-                .Returns(true);
         }
-        private void ReturnFalseXTimes(int nrOfFalseToReturn)
-        {
-            int counter = 0;
-            bool isGameOver = false;
-            mockBlackjackGame.Setup(game => game.IsGameOver())
-                .Callback(() =>
-                {
-                    if (counter == nrOfFalseToReturn)
-                    {
-                        isGameOver = true;
-                    }
-                })
-                .Returns(isGameOver);
 
-        }
         [Fact]
         public void PlayGame_ShouldCallToDealANewHand()
         {
+            mockBlackjackGame.Setup(game => game.IsGameOver())
+                .Returns(true);
             sut.PlayGame();
             mockBlackjackGame.Verify(game => game.DealNewHand(), Times.Once());
         }
@@ -45,13 +31,18 @@ namespace BlackjackTest.Controller
         [Fact]
         public void PlayGame_ShouldCallIsGameOverOnceIfReturnsTrue()
         {
+            mockBlackjackGame.Setup(game => game.IsGameOver())
+                .Returns(true);
             sut.PlayGame();
             mockBlackjackGame.Verify(game => game.IsGameOver(), Times.Once());
         }
 
         [Fact]
-        public void PlayGame_ShouldCallIsGameOverUntilReturnsTrue()
+        public void PlayGame_ShouldCallIsGameOverAgainIfFirstReturnWasntTrue()
         {
+            mockBlackjackGame.SetupSequence(game => game.IsGameOver())
+                .Returns(false)
+                .Returns(true);
             sut.PlayGame();
             mockBlackjackGame.Verify(game => game.IsGameOver(), Times.Exactly(2));
         }
