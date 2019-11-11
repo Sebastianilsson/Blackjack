@@ -7,5 +7,9 @@ namespace Blackjack.View
     public interface IGameView
     {
         void RenderStartMenu();
+        StartMenuAction GetStartMenuAction();
+    }
+    public enum StartMenuAction
+    {
     }
 }

@@ -25,5 +25,13 @@ namespace BlackjackTest.Controller
             sut.RunGame();
             mockGameView.Verify(view => view.RenderStartMenu(), Times.Once());
         }
+
+        [Fact]
+        public void RunGame_ShouldCallToGetNextStartMenuAction()
+        {
+            mockGameView.Setup(view => view.GetStartMenuAction());
+            sut.RunGame();
+            mockGameView.Verify(view => view.GetStartMenuAction(), Times.Once());
+        }
     }
 }
