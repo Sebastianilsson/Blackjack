@@ -20,11 +20,13 @@ namespace Blackjack.Controller
             {
                 GameView.RenderPlayersHands();
                 GameView.RenderGameActionChoices();
-                Game.DealerTakeCards();
                 switch (GameView.GetGameAction())
                 {
                     case View.GameAction.Hit:
                         Game.Hit();
+                        break;
+                    case View.GameAction.Stay:
+                        Game.DealerTakeCards();
                         break;
                 }
             }
