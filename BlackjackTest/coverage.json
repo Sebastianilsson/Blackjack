@@ -1,5 +1,111 @@
 {
   "Blackjack.dll": {
+    "C:\\Users\\nilss\\2DV610\\Blackjack\\Blackjack\\Program.cs": {
+      "Blackjack.Program": {
+        "System.Void Blackjack.Program::Main(System.String[])": {
+          "Lines": {
+            "10": 0,
+            "11": 0,
+            "12": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\nilss\\2DV610\\Blackjack\\Blackjack\\Controller\\GameController.cs": {
+      "Blackjack.Controller.GameController": {
+        "Blackjack.Model.IBlackjackGame Blackjack.Controller.GameController::get_Game()": {
+          "Lines": {
+            "9": 39
+          },
+          "Branches": []
+        },
+        "Blackjack.View.IGameView Blackjack.Controller.GameController::get_GameView()": {
+          "Lines": {
+            "10": 36
+          },
+          "Branches": []
+        },
+        "System.Void Blackjack.Controller.GameController::PlayGame()": {
+          "Lines": {
+            "17": 9,
+            "18": 9,
+            "19": 15,
+            "20": 6,
+            "21": 6,
+            "22": 6,
+            "23": 6,
+            "26": 5,
+            "27": 5,
+            "29": 1,
+            "30": 1,
+            "32": 6,
+            "33": 9,
+            "34": 9
+          },
+          "Branches": [
+            {
+              "Line": 19,
+              "Offset": 110,
+              "EndOffset": 15,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 6
+            },
+            {
+              "Line": 23,
+              "Offset": 55,
+              "EndOffset": 59,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 23,
+              "Offset": 55,
+              "EndOffset": 65,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 5
+            },
+            {
+              "Line": 23,
+              "Offset": 61,
+              "EndOffset": 79,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 1
+            },
+            {
+              "Line": 23,
+              "Offset": 61,
+              "EndOffset": 93,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 6
+            },
+            {
+              "Line": 19,
+              "Offset": 110,
+              "EndOffset": 112,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 9
+            }
+          ]
+        },
+        "System.Void Blackjack.Controller.GameController::.ctor(Blackjack.Model.IBlackjackGame,Blackjack.View.IGameView)": {
+          "Lines": {
+            "11": 9,
+            "12": 9,
+            "13": 9,
+            "14": 9,
+            "15": 9
+          },
+          "Branches": []
+        }
+      }
+    },
     "C:\\Users\\nilss\\2DV610\\Blackjack\\Blackjack\\Controller\\MainController.cs": {
       "Blackjack.Controller.MainController": {
         "Blackjack.Controller.IGameController Blackjack.Controller.MainController::get_GameController()": {
