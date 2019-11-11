@@ -12,5 +12,6 @@ namespace Blackjack.View
         void RenderExitMessage();
         void RenderPlayersHands();
         void RenderGameActionChoices();
+        GameAction GetGameAction();
     }
 }

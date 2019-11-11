@@ -13,4 +13,9 @@ namespace Blackjack.View
         Rules,
         Exit
     }
+
+    public enum GameAction
+    {
+
+    }
 }

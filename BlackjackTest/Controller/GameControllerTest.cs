@@ -67,5 +67,13 @@ namespace BlackjackTest.Controller
             sut.PlayGame();
             mockGameView.Verify(view => view.RenderGameActionChoices(), Times.Once());
         }
+
+        [Fact]
+        public void PlayGame_ShouldCallToGetNextrGameAction()
+        {
+            GoIntoWhileLoopOnce();
+            sut.PlayGame();
+            mockGameView.Verify(view => view.GetGameAction(), Times.Once());
+        }
     }
 }
