@@ -23,6 +23,13 @@ namespace BlackjackTest.Controller
                 .Returns(true);
         }
 
+        private void GoIntoWhileLoopOnce()
+        {
+            mockBlackjackGame.SetupSequence(game => game.IsGameOver())
+                .Returns(false)
+                .Returns(true);
+        }
+
         [Fact]
         public void PlayGame_ShouldCallToDealANewHand()
         {
@@ -40,9 +47,7 @@ namespace BlackjackTest.Controller
         [Fact]
         public void PlayGame_ShouldCallIsGameOverAgainIfFirstReturnWasntTrue()
         {
-            mockBlackjackGame.SetupSequence(game => game.IsGameOver())
-                .Returns(false)
-                .Returns(true);
+            GoIntoWhileLoopOnce();
             sut.PlayGame();
             mockBlackjackGame.Verify(game => game.IsGameOver(), Times.Exactly(2));
         }
@@ -50,9 +55,7 @@ namespace BlackjackTest.Controller
         [Fact]
         public void PlayGame_ShouldCallToRenderPlayersHands()
         {
-            mockBlackjackGame.SetupSequence(game => game.IsGameOver())
-                .Returns(false)
-                .Returns(true);
+            GoIntoWhileLoopOnce();
             sut.PlayGame();
             mockGameView.Verify(view => view.RenderPlayersHands(), Times.Once());
         }
