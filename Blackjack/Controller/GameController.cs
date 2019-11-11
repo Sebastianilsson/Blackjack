@@ -14,7 +14,7 @@ namespace Blackjack.Controller
         public void PlayGame()
         {
             Game.DealNewHand();
-            while (!Game.IsGameOver())
+            while (Game.IsGameOver() == false)
             {
 
             }

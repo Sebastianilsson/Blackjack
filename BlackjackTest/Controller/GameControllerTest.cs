@@ -17,13 +17,13 @@ namespace BlackjackTest.Controller
         {
             mockBlackjackGame = new Mock<IBlackjackGame>();
             sut = new GameController(mockBlackjackGame.Object);
+            mockBlackjackGame.Setup(game => game.IsGameOver())
+                .Returns(true);
         }
 
         [Fact]
         public void PlayGame_ShouldCallToDealANewHand()
         {
-            mockBlackjackGame.Setup(game => game.IsGameOver())
-                .Returns(true);
             sut.PlayGame();
             mockBlackjackGame.Verify(game => game.DealNewHand(), Times.Once());
         }
@@ -31,8 +31,6 @@ namespace BlackjackTest.Controller
         [Fact]
         public void PlayGame_ShouldCallIsGameOverOnceIfReturnsTrue()
         {
-            mockBlackjackGame.Setup(game => game.IsGameOver())
-                .Returns(true);
             sut.PlayGame();
             mockBlackjackGame.Verify(game => game.IsGameOver(), Times.Once());
         }
