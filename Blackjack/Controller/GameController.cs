@@ -7,9 +7,11 @@ namespace Blackjack.Controller
     public class GameController : IGameController
     {
         private Model.IBlackjackGame Game { get; set; }
-        public GameController(Model.IBlackjackGame game)
+        private View.IGameView GameView { get; set; }
+        public GameController(Model.IBlackjackGame game, View.IGameView gameView)
         {
             Game = game;
+            GameView = gameView;
         }
         public void PlayGame()
         {

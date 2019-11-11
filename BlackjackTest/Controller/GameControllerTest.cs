@@ -13,10 +13,12 @@ namespace BlackjackTest.Controller
     {
         private GameController sut;
         private Mock<IBlackjackGame> mockBlackjackGame;
+        private Mock<IGameView> mockGameView;
         public GameControllerTest()
         {
             mockBlackjackGame = new Mock<IBlackjackGame>();
-            sut = new GameController(mockBlackjackGame.Object);
+            mockGameView = new Mock<IGameView>();
+            sut = new GameController(mockBlackjackGame.Object, mockGameView.Object);
             mockBlackjackGame.Setup(game => game.IsGameOver())
                 .Returns(true);
         }
@@ -43,6 +45,16 @@ namespace BlackjackTest.Controller
                 .Returns(true);
             sut.PlayGame();
             mockBlackjackGame.Verify(game => game.IsGameOver(), Times.Exactly(2));
+        }
+
+        [Fact]
+        public void PlayGame_ShouldCallToRenderPlayersHands()
+        {
+            mockBlackjackGame.SetupSequence(game => game.IsGameOver())
+                .Returns(false)
+                .Returns(true);
+            sut.PlayGame();
+            mockGameView.Verify(view => view.RenderPlayersHands(), Times.Once());
         }
     }
 }
