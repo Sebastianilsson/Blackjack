@@ -4,9 +4,10 @@ using System.Text;
 
 namespace Blackjack.View
 {
-    public interface IGameView
+    public class GameView
     {
-        void RenderStartMenu();
-        StartMenuAction GetStartMenuAction();
+    }
+    public enum StartMenuAction
+    {
     }
 }
