@@ -20,7 +20,7 @@ namespace Blackjack.Controller
             {
                 GameView.RenderPlayersHands();
                 GameView.RenderGameActionChoices();
-                
+                Game.Hit();
                 switch (GameView.GetGameAction())
                 {
 
