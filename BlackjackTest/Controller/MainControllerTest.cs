@@ -8,12 +8,12 @@ using Moq;
 
 namespace BlackjackTest.Controller
 {
-    public class MainMenuTest
+    public class MainControllerTest
     {
         private MainController sut;
         private Mock<IGameController> mockGameController;
         private Mock<IGameView> mockGameView;
-        public MainMenuTest()
+        public MainControllerTest()
         {
             mockGameController = new Mock<IGameController>();
             mockGameView = new Mock<IGameView>();
@@ -50,6 +50,15 @@ namespace BlackjackTest.Controller
                 .Returns(StartMenuAction.Rules);
             sut.RunGame();
             mockGameView.Verify(view => view.RenderRules(), Times.Once());
+        }
+
+        [Fact]
+        public void RunGame_ShouldCallToRenderExitMessageIfStartMenuActionIsExit()
+        {
+            mockGameView.Setup(view => view.GetStartMenuAction())
+                .Returns(StartMenuAction.Exit);
+            sut.RunGame();
+            mockGameView.Verify(view => view.RenderExitMessage(), Times.Once());
         }
     }
 }
