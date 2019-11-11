@@ -85,5 +85,15 @@ namespace BlackjackTest.Controller
             sut.PlayGame();
             mockBlackjackGame.Verify(game => game.Hit(), Times.Once());
         }
+
+        [Fact]
+        public void PlayGame_ShouldCallToDealerTakeCardsIfGameActionReturnsStay()
+        {
+            GoIntoWhileLoopOnce();
+            mockGameView.Setup(view => view.GetGameAction())
+                .Returns(GameAction.Stay);
+            sut.PlayGame();
+            mockBlackjackGame.Verify(game => game.DealerTakeCards(), Times.Once());
+        }
     }
 }
