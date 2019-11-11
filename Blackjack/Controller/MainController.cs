@@ -24,9 +24,10 @@ namespace Blackjack.Controller
                 case View.StartMenuAction.Rules:
                     GameView.RenderRules();
                     break;
+                case View.StartMenuAction.Exit:
+                    GameView.RenderExitMessage();
+                    break;
             }
-            GameView.RenderExitMessage();
-            
         }
     }
 }
