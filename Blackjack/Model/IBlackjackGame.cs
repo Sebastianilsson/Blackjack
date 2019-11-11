@@ -8,5 +8,6 @@ namespace Blackjack.Model
     {
         void DealNewHand();
         bool IsGameOver();
+        void Hit();
     }
 }
