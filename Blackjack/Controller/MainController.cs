@@ -25,7 +25,7 @@ namespace Blackjack.Controller
                     GameView.RenderRules();
                     break;
             }
-            
+            GameView.RenderExitMessage();
             
         }
     }
