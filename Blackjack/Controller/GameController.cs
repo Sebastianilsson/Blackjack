@@ -18,7 +18,7 @@ namespace Blackjack.Controller
             Game.DealNewHand();
             while (Game.IsGameOver() == false)
             {
-
+                GameView.RenderPlayersHands();
             }
         }
     }
