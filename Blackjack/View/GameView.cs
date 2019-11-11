@@ -9,6 +9,7 @@ namespace Blackjack.View
     }
     public enum StartMenuAction
     {
-        PlayGame
+        PlayGame,
+        Rules
     }
 }

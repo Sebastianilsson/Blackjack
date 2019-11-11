@@ -8,5 +8,6 @@ namespace Blackjack.View
     {
         void RenderStartMenu();
         StartMenuAction GetStartMenuAction();
+        void RenderRules();
     }
 }
