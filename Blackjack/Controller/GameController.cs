@@ -30,6 +30,7 @@ namespace Blackjack.Controller
                         break;
                 }
             }
+            GameView.RenderResultOfGame();
         }
     }
 }
