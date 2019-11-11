@@ -10,12 +10,18 @@ namespace BlackjackTest.Controller
 {
     public class MainMenuTest
     {
+        private MainController sut;
+        private Mock<IGameView> mockGameView;
+        public MainMenuTest()
+        {
+            mockGameView = new Mock<IGameView>();
+            sut = new MainController(mockGameView.Object);
+        }
+
         [Fact]
         public void RunGame_ShouldCallToDisplayStartMenu()
         {
-            var mockGameView = new Mock<IGameView>();
             mockGameView.Setup(view => view.RenderStartMenu());
-            MainController sut = new MainController(mockGameView.Object);
             sut.RunGame();
             mockGameView.Verify(view => view.RenderStartMenu(), Times.Once());
         }
