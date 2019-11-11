@@ -23,7 +23,6 @@ namespace BlackjackTest.Controller
         [Fact]
         public void RunGame_ShouldCallToDisplayStartMenu()
         {
-            mockGameView.Setup(view => view.RenderStartMenu());
             sut.RunGame();
             mockGameView.Verify(view => view.RenderStartMenu(), Times.Once());
         }
@@ -31,7 +30,6 @@ namespace BlackjackTest.Controller
         [Fact]
         public void RunGame_ShouldCallToGetNextStartMenuAction()
         {
-            mockGameView.Setup(view => view.GetStartMenuAction());
             sut.RunGame();
             mockGameView.Verify(view => view.GetStartMenuAction(), Times.Once());
         }
@@ -41,7 +39,6 @@ namespace BlackjackTest.Controller
         {
             mockGameView.Setup(view => view.GetStartMenuAction())
                 .Returns(StartMenuAction.PlayGame);
-            mockGameController.Setup(controller => controller.PlayGame());
             sut.RunGame();
             mockGameController.Verify(controller => controller.PlayGame(), Times.Once());
         }
