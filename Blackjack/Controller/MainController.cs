@@ -21,7 +21,8 @@ namespace Blackjack.Controller
                 case View.StartMenuAction.PlayGame:
                     GameController.PlayGame();
                     break;
-        }
+            }
+            GameView.RenderRules();
             
         }
     }
