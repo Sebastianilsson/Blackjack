@@ -17,6 +17,7 @@ namespace Blackjack.Controller
         {
             GameView.RenderStartMenu();
             GameView.GetStartMenuAction();
+            GameController.PlayGame();
         }
     }
 }
