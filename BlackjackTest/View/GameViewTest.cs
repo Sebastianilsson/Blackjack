@@ -38,6 +38,12 @@ namespace BlackjackTest.View
             Assert.Throws<Exception>(() => sut.GetStartMenuAction());
         }
 
-        
+        [Fact]
+        public void GetStartMenuAction_ShouldThrowExceptionIfIntegerOverThree()
+        {
+            var input = new StringReader("4");
+            Console.SetIn(input);
+            Assert.Throws<Exception>(() => sut.GetStartMenuAction());
+        }
     }
 }
