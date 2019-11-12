@@ -23,7 +23,7 @@ namespace Blackjack.View
             string input = Console.ReadLine();
             //int input;
             //bool isInt = int.TryParse(Console.ReadLine(), out input);
-            if (input == null)
+            if (input == null || input == "a")
             {
                 throw new Exception();
             }
