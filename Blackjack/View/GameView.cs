@@ -48,7 +48,7 @@ namespace Blackjack.View
         }
         public void RenderGameActionChoices()
         {
-            throw new NotImplementedException();
+            Console.Write("1. Hit\r\n2. Stay\r\nMake a Choice (1-2): ");
         }
         public GameAction GetGameAction()
         {

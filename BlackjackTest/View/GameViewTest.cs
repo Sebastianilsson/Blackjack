@@ -98,7 +98,7 @@ namespace BlackjackTest.View
         {
             CollectConsoleOutput();
             string expected = "1. Hit\r\n2. Stay\r\nMake a Choice (1-2): ";
-            sut.RenderStartMenu();
+            sut.RenderGameActionChoices();
             string actual = output.ToString();
             Assert.Equal(expected, actual);
         }
