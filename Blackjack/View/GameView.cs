@@ -8,7 +8,10 @@ namespace Blackjack.View
     {
         public void RenderStartMenu()
         {
-            throw new NotImplementedException();
+            Console.Write(@"1. Play Game
+2. Show Rules
+3. Exit
+Make a Choice (1-3): ");
         }
         public StartMenuAction GetStartMenuAction()
         {
