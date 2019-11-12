@@ -6,12 +6,17 @@ namespace Blackjack.View
 {
     public class GameView : IGameView
     {
+        // If you add actions to the StartMenu remember to update test 
+        // RenderStartMenu_ShouldRenderTheStartMenuInConsoleWhenCalled()
         public void RenderStartMenu()
         {
-            Console.Write(@"1. Play Game
-2. Show Rules
-3. Exit
-Make a Choice (1-3): ");
+            Array startMenuActions = typeof(StartMenuAction).GetEnumValues();
+            int itemListNumber = 1;
+            foreach (StartMenuAction loginType in startMenuActions)
+            {
+                Console.WriteLine($"{itemListNumber++}. {loginType}");
+            }
+            Console.Write("Make a Choice (1-3): ");
         }
         public StartMenuAction GetStartMenuAction()
         {

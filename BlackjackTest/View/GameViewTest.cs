@@ -16,10 +16,7 @@ namespace BlackjackTest.View
             var output = new StringWriter();
             Console.SetOut(output);
             IGameView sut = new GameView();
-            string expected = @"1. Play Game
-2. Show Rules
-3. Exit
-Make a Choice (1-3): ";
+            string expected = "1. PlayGame\r\n2. Rules\r\n3. Exit\r\nMake a Choice (1-3): ";
             sut.RenderStartMenu();
             string actual = output.ToString();
             Assert.Equal(expected, actual);            
