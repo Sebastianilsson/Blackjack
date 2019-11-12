@@ -26,7 +26,7 @@ namespace Blackjack.View
             {
                 throw new Exception();
             }
-            return (StartMenuAction)input;
+            return (StartMenuAction)1;
         }
         public void RenderRules()
         {

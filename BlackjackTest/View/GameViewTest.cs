@@ -39,6 +39,17 @@ namespace BlackjackTest.View
             Assert.Throws<Exception>(() => sut.GetStartMenuAction());
         }
 
-        
+        [Fact]
+        public void GetStartMenuAction_ShouldReturnPlayGameIfInputIsOne()
+        {
+            string userInput = "1";
+            var input = new StringReader(userInput);
+            Console.SetIn(input);
+            int test;
+            int.TryParse(userInput, out test);
+            StartMenuAction expected = StartMenuAction.PlayGame;
+            StartMenuAction actual = sut.GetStartMenuAction();
+            Assert.Equal(expected, actual);
+        }
     }
 }
