@@ -113,5 +113,18 @@ namespace BlackjackTest.View
             SetUserInput(userInput);
             Assert.Throws<Exception>(() => sut.GetGameAction());
         }
+
+        [Theory]
+        [InlineData("1")]
+        [InlineData("2")]
+        public void GetGameAction_ShouldReturnMatchingGameActionIfOneOrTwo(string userInput)
+        {
+            SetUserInput(userInput);
+            int menuChoice;
+            int.TryParse(userInput, out menuChoice);
+            GameAction expected = (GameAction)menuChoice;
+            GameAction actual = sut.GetGameAction();
+            Assert.Equal(expected, actual);
+        }
     }
 }
