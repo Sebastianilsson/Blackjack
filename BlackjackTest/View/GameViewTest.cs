@@ -30,5 +30,14 @@ namespace BlackjackTest.View
             IGameView sut = new GameView();
             Assert.Throws<Exception>(() => sut.GetStartMenuAction());
         }
+
+        [Fact]
+        public void GetStartMenuAction_ShouldThrowExceptionIfLetterInput()
+        {
+            var input = new StringReader("a");
+            Console.SetIn(input);
+            IGameView sut = new GameView();
+            Assert.Throws<Exception>(() => sut.GetStartMenuAction());
+        }
     }
 }

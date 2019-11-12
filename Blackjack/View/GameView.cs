@@ -20,7 +20,14 @@ namespace Blackjack.View
         }
         public StartMenuAction GetStartMenuAction()
         {
-            throw new Exception();
+            string input = Console.ReadLine();
+            //int input;
+            //bool isInt = int.TryParse(Console.ReadLine(), out input);
+            if (input == null)
+            {
+                throw new Exception();
+            }
+            return (StartMenuAction)1;
         }
         public void RenderRules()
         {
