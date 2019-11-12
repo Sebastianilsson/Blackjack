@@ -20,7 +20,7 @@ namespace Blackjack.View
         }
         public StartMenuAction GetStartMenuAction()
         {
-            throw new NotImplementedException();
+            throw new Exception();
         }
         public void RenderRules()
         {

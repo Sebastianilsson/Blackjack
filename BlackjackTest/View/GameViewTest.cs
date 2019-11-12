@@ -25,7 +25,7 @@ namespace BlackjackTest.View
         [Fact]
         public void GetStartMenuAction_ShouldThrowExceptionIfEmptyInput() 
         {
-            var input = new StringReader(null);
+            var input = new StringReader("");
             Console.SetIn(input);
             IGameView sut = new GameView();
             Assert.Throws<Exception>(() => sut.GetStartMenuAction());
