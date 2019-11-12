@@ -59,6 +59,13 @@ namespace Blackjack.View
         }
         public GameAction GetGameAction()
         {
+            int input;
+            bool isInt = int.TryParse(Console.ReadLine(), out input);
+            if (!isInt || input < 1 || input > 2)
+            {
+                throw new Exception();
+            }
+
             throw new NotImplementedException();
         }
         public void RenderResultOfGame()
