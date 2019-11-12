@@ -12,11 +12,203 @@
         }
       }
     },
+    "C:\\Users\\nilss\\2DV610\\Blackjack\\Blackjack\\View\\GameView.cs": {
+      "Blackjack.View.GameView": {
+        "System.Void Blackjack.View.GameView::RenderStartMenu()": {
+          "Lines": {
+            "17": 1,
+            "18": 1,
+            "19": 1,
+            "20": 9,
+            "21": 3,
+            "22": 3,
+            "23": 3,
+            "24": 1,
+            "25": 1
+          },
+          "Branches": [
+            {
+              "Line": 20,
+              "Offset": 86,
+              "EndOffset": 34,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 3
+            },
+            {
+              "Line": 20,
+              "Offset": 86,
+              "EndOffset": 88,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            }
+          ]
+        },
+        "Blackjack.View.StartMenuAction Blackjack.View.GameView::GetStartMenuAction()": {
+          "Lines": {
+            "27": 7,
+            "28": 7,
+            "29": 3,
+            "30": 3
+          },
+          "Branches": []
+        },
+        "System.Void Blackjack.View.GameView::RenderRules()": {
+          "Lines": {
+            "32": 1,
+            "33": 1,
+            "34": 1
+          },
+          "Branches": []
+        },
+        "System.String Blackjack.View.GameView::PressEnterToContinue()": {
+          "Lines": {
+            "36": 1,
+            "37": 1,
+            "38": 1
+          },
+          "Branches": []
+        },
+        "System.Void Blackjack.View.GameView::RenderExitMessage()": {
+          "Lines": {
+            "40": 1,
+            "41": 1,
+            "42": 1
+          },
+          "Branches": []
+        },
+        "System.Void Blackjack.View.GameView::RenderPlayersHands()": {
+          "Lines": {
+            "44": 0,
+            "45": 0
+          },
+          "Branches": []
+        },
+        "System.Void Blackjack.View.GameView::RenderGameActionChoices()": {
+          "Lines": {
+            "48": 1,
+            "49": 1,
+            "50": 1,
+            "51": 7,
+            "52": 2,
+            "53": 2,
+            "54": 2,
+            "55": 1,
+            "56": 1
+          },
+          "Branches": [
+            {
+              "Line": 51,
+              "Offset": 86,
+              "EndOffset": 34,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            },
+            {
+              "Line": 51,
+              "Offset": 86,
+              "EndOffset": 88,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            }
+          ]
+        },
+        "Blackjack.View.GameAction Blackjack.View.GameView::GetGameAction()": {
+          "Lines": {
+            "58": 6,
+            "59": 6,
+            "60": 2,
+            "61": 2
+          },
+          "Branches": []
+        },
+        "System.Void Blackjack.View.GameView::RenderResultOfGame()": {
+          "Lines": {
+            "63": 0,
+            "64": 0
+          },
+          "Branches": []
+        },
+        "System.Int32 Blackjack.View.GameView::CheckIfValidMenuChoice(System.Int32)": {
+          "Lines": {
+            "68": 13,
+            "70": 13,
+            "71": 13,
+            "72": 8,
+            "73": 8,
+            "75": 5,
+            "76": 5
+          },
+          "Branches": [
+            {
+              "Line": 71,
+              "Offset": 15,
+              "EndOffset": 17,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 9
+            },
+            {
+              "Line": 71,
+              "Offset": 24,
+              "EndOffset": 26,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 7
+            },
+            {
+              "Line": 71,
+              "Offset": 15,
+              "EndOffset": 32,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 6
+            },
+            {
+              "Line": 71,
+              "Offset": 24,
+              "EndOffset": 32,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 6
+            },
+            {
+              "Line": 71,
+              "Offset": 35,
+              "EndOffset": 37,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 8
+            },
+            {
+              "Line": 71,
+              "Offset": 35,
+              "EndOffset": 44,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 5
+            }
+          ]
+        },
+        "System.Void Blackjack.View.GameView::.ctor()": {
+          "Lines": {
+            "9": 18,
+            "10": 18,
+            "11": 18,
+            "12": 18
+          },
+          "Branches": []
+        }
+      }
+    },
     "C:\\Users\\nilss\\2DV610\\Blackjack\\Blackjack\\Controller\\GameController.cs": {
       "Blackjack.Controller.GameController": {
         "Blackjack.Model.IBlackjackGame Blackjack.Controller.GameController::get_Game()": {
           "Lines": {
-            "9": 39
+            "9": 35
           },
           "Branches": []
         },
@@ -35,8 +227,8 @@
             "21": 6,
             "22": 6,
             "23": 6,
-            "26": 5,
-            "27": 5,
+            "26": 1,
+            "27": 1,
             "29": 1,
             "30": 1,
             "32": 6,
@@ -46,7 +238,7 @@
           "Branches": [
             {
               "Line": 19,
-              "Offset": 110,
+              "Offset": 111,
               "EndOffset": 15,
               "Path": 1,
               "Ordinal": 5,
@@ -54,40 +246,40 @@
             },
             {
               "Line": 23,
-              "Offset": 55,
-              "EndOffset": 59,
+              "Offset": 56,
+              "EndOffset": 60,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 1
-            },
-            {
-              "Line": 23,
-              "Offset": 55,
-              "EndOffset": 65,
-              "Path": 1,
-              "Ordinal": 1,
               "Hits": 5
             },
             {
               "Line": 23,
-              "Offset": 61,
-              "EndOffset": 79,
+              "Offset": 56,
+              "EndOffset": 66,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            },
+            {
+              "Line": 23,
+              "Offset": 62,
+              "EndOffset": 80,
               "Path": 1,
               "Ordinal": 3,
               "Hits": 1
             },
             {
               "Line": 23,
-              "Offset": 61,
-              "EndOffset": 93,
+              "Offset": 62,
+              "EndOffset": 94,
               "Path": 0,
               "Ordinal": 2,
               "Hits": 6
             },
             {
               "Line": 19,
-              "Offset": 110,
-              "EndOffset": 112,
+              "Offset": 111,
+              "EndOffset": 113,
               "Path": 0,
               "Ordinal": 4,
               "Hits": 9
@@ -110,7 +302,7 @@
       "Blackjack.Controller.MainController": {
         "Blackjack.Controller.IGameController Blackjack.Controller.MainController::get_GameController()": {
           "Lines": {
-            "9": 8
+            "9": 6
           },
           "Branches": []
         },
@@ -125,8 +317,8 @@
             "17": 5,
             "18": 5,
             "19": 5,
-            "22": 3,
-            "23": 3,
+            "22": 1,
+            "23": 1,
             "25": 1,
             "26": 1,
             "28": 1,
@@ -136,32 +328,32 @@
           "Branches": [
             {
               "Line": 19,
-              "Offset": 28,
-              "EndOffset": 47,
+              "Offset": 30,
+              "EndOffset": 49,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 3
+              "Hits": 1
             },
             {
               "Line": 19,
-              "Offset": 28,
-              "EndOffset": 61,
+              "Offset": 30,
+              "EndOffset": 63,
               "Path": 2,
               "Ordinal": 2,
               "Hits": 1
             },
             {
               "Line": 19,
-              "Offset": 28,
-              "EndOffset": 75,
+              "Offset": 30,
+              "EndOffset": 77,
               "Path": 3,
               "Ordinal": 3,
               "Hits": 1
             },
             {
               "Line": 19,
-              "Offset": 28,
-              "EndOffset": 89,
+              "Offset": 30,
+              "EndOffset": 91,
               "Path": 0,
               "Ordinal": 0,
               "Hits": 5
