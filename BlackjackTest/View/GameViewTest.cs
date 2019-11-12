@@ -10,34 +10,33 @@ namespace BlackjackTest.View
 {
     public class GameViewTest
     {
+        private IGameView sut;
+        public GameViewTest()
+        {
+            sut = new GameView();
+        }
+
         [Fact]
         public void RenderStartMenu_ShouldRenderTheStartMenuInConsoleWhenCalled()
         {
             var output = new StringWriter();
             Console.SetOut(output);
-            IGameView sut = new GameView();
             string expected = "1. PlayGame\r\n2. Rules\r\n3. Exit\r\nMake a Choice (1-3): ";
             sut.RenderStartMenu();
             string actual = output.ToString();
             Assert.Equal(expected, actual);            
         }
 
-        [Fact]
-        public void GetStartMenuAction_ShouldThrowExceptionIfEmptyInput() 
+        [Theory]
+        [InlineData("")]
+        [InlineData("a")]
+        public void GetStartMenuAction_ShouldThrowExceptionIfInputNotOneToThree(string userinput) 
         {
-            var input = new StringReader("");
+            var input = new StringReader(userinput);
             Console.SetIn(input);
-            IGameView sut = new GameView();
             Assert.Throws<Exception>(() => sut.GetStartMenuAction());
         }
 
-        [Fact]
-        public void GetStartMenuAction_ShouldThrowExceptionIfLetterInput()
-        {
-            var input = new StringReader("a");
-            Console.SetIn(input);
-            IGameView sut = new GameView();
-            Assert.Throws<Exception>(() => sut.GetStartMenuAction());
-        }
+        
     }
 }
