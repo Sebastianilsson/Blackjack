@@ -31,6 +31,7 @@ namespace BlackjackTest.View
         [InlineData("")]
         [InlineData("a")]
         [InlineData("0")]
+        [InlineData("4")]
         public void GetStartMenuAction_ShouldThrowExceptionIfInputNotIntegearOneToThree(string userinput) 
         {
             var input = new StringReader(userinput);
@@ -38,12 +39,6 @@ namespace BlackjackTest.View
             Assert.Throws<Exception>(() => sut.GetStartMenuAction());
         }
 
-        [Fact]
-        public void GetStartMenuAction_ShouldThrowExceptionIfIntegerOverThree()
-        {
-            var input = new StringReader("4");
-            Console.SetIn(input);
-            Assert.Throws<Exception>(() => sut.GetStartMenuAction());
-        }
+        
     }
 }
