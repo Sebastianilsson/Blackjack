@@ -8,13 +8,15 @@ namespace Blackjack.View
     {
         internal string rules = "RULES\n\nThis is a simple game of Blackjack. \nWhen the game starts both you and the dealer get two open cards each. \nThe goal of the game is to get a score of 21. \nWhen the cards are dealt you will get the choose between 'hit' or 'stay'. \nIf you choose 'hit' then you will get another card. \nIf your score gets higher than 21 then you are busted and you lose. \nIf you choose to 'stay' on a score lower than 21 it's the dealers turn to draw cards. \nThe dealer needs to keep taking new cards until he has a scor of at least 17. \nIf you have a score higher than 17 the dealer will continue to take cards until he has a score higher than yours. \nThe dealer wins all ties. \n\nGood luck! \n\nPress 'enter' to continue: ";
         internal string exitMessage = "Bye bye!\nThank you for playing!";
+        internal int minimumMenuChoice = 1;
+        internal int firstMenuNumber = 1;
 
         // If you add actions to the StartMenu remember to update test 
         // RenderStartMenu_ShouldRenderTheStartMenuInConsoleWhenCalled()
         public void RenderStartMenu()
         {
             Array startMenuActions = typeof(StartMenuAction).GetEnumValues();
-            int itemListNumber = 1;
+            int itemListNumber = firstMenuNumber;
             foreach (StartMenuAction action in startMenuActions)
             {
                 Console.WriteLine($"{itemListNumber++}. {action}");
@@ -23,13 +25,8 @@ namespace Blackjack.View
         }
         public StartMenuAction GetStartMenuAction()
         {
-            int input;
-            bool isInt = int.TryParse(Console.ReadLine(), out input);
-            if (!isInt || input < 1 || input > 3)
-            {
-                throw new Exception();
-            }
-            return (StartMenuAction)input;
+            int actionChoice = CheckIfValidMenuChoice(3);
+            return (StartMenuAction)actionChoice;
         }
         public void RenderRules()
         {
@@ -50,7 +47,7 @@ namespace Blackjack.View
         public void RenderGameActionChoices()
         {
             Array gameActions = typeof(GameAction).GetEnumValues();
-            int itemListNumber = 1;
+            int itemListNumber = minimumMenuChoice;
             foreach (GameAction action in gameActions)
             {
                 Console.WriteLine($"{itemListNumber++}. {action}");
@@ -59,18 +56,23 @@ namespace Blackjack.View
         }
         public GameAction GetGameAction()
         {
-            int input;
-            bool isInt = int.TryParse(Console.ReadLine(), out input);
-            if (!isInt || input < 1 || input > 2)
-            {
-                throw new Exception();
-            }
-
-            return (GameAction)input;
+            int actionChoice = CheckIfValidMenuChoice(2);
+            return (GameAction)actionChoice;
         }
         public void RenderResultOfGame()
         {
             throw new NotImplementedException();
+        }
+
+        private int CheckIfValidMenuChoice(int numberOfChoicesInMenu)
+        {
+            int input;
+            bool isInt = int.TryParse(Console.ReadLine(), out input);
+            if (!isInt || input < minimumMenuChoice || input > numberOfChoicesInMenu)
+            {
+                throw new Exception();
+            }
+            return input;
         }
     }
     public enum StartMenuAction
