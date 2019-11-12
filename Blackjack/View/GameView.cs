@@ -38,7 +38,7 @@ namespace Blackjack.View
         }
         public void RenderExitMessage()
         {
-            throw new NotImplementedException();
+            Console.Write("Bye bye!\nThank you for playing!");
         }
         public void RenderPlayersHands()
         {
