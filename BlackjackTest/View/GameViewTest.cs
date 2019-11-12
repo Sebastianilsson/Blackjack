@@ -21,5 +21,14 @@ namespace BlackjackTest.View
             string actual = output.ToString();
             Assert.Equal(expected, actual);            
         }
+
+        [Fact]
+        public void GetStartMenuAction_ShouldThrowExceptionIfEmptyInput() 
+        {
+            var input = new StringReader(null);
+            Console.SetIn(input);
+            IGameView sut = new GameView();
+            Assert.Throws<Exception>(() => sut.GetStartMenuAction());
+        }
     }
 }
