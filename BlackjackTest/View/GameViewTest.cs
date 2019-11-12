@@ -73,13 +73,13 @@ namespace BlackjackTest.View
             string actual = output.ToString();
             Assert.Equal(expected, actual);
         }
+
         [Fact]
         public void PressEnterToContinue_ShouldLetTheUserContinueWhenEnterIsPressed()
         {
-            CollectConsoleOutput();
-            string expected = It.IsAny<string>();
-            sut.RenderRules();
-            string actual = output.ToString();
+            SetUserInput("");
+            string expected = null;
+            string actual = sut.PressEnterToContinue();
             Assert.Equal(expected, actual);
         }
     }
