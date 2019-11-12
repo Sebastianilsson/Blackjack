@@ -9,6 +9,7 @@ namespace Blackjack.View
         void RenderStartMenu();
         StartMenuAction GetStartMenuAction();
         void RenderRules();
+        void PressEnterToContinue();
         void RenderExitMessage();
         void RenderPlayersHands();
         void RenderGameActionChoices();
