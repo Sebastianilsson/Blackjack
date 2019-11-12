@@ -82,5 +82,15 @@ namespace BlackjackTest.View
             string actual = sut.PressEnterToContinue();
             Assert.Equal(expected, actual);
         }
+
+        [Fact]
+        public void RenderExitMessage_ShouldRenderExitMessage()
+        {
+            CollectConsoleOutput();
+            string expected = "Bye bye!\nThank you for playing!";
+            sut.RenderRules();
+            string actual = output.ToString();
+            Assert.Equal(expected, actual);
+        }
     }
 }
