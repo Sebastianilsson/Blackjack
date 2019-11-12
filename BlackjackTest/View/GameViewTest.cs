@@ -55,5 +55,17 @@ namespace BlackjackTest.View
             StartMenuAction actual = sut.GetStartMenuAction();
             Assert.Equal(expected, actual);
         }
+
+        [Fact]
+        public void GetStartMenuAction_ShouldReturnRulesIfInputIsTwo()
+        {
+            string userInput = "2";
+            SetUserInput(userInput);
+            int test;
+            int.TryParse(userInput, out test);
+            StartMenuAction expected = StartMenuAction.Rules;
+            StartMenuAction actual = sut.GetStartMenuAction();
+            Assert.Equal(expected, actual);
+        }
     }
 }
