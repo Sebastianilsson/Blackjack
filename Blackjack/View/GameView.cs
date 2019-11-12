@@ -22,7 +22,7 @@ namespace Blackjack.View
         {
             int input;
             bool isInt = int.TryParse(Console.ReadLine(), out input);
-            if (!isInt || input < 1)
+            if (!isInt || input < 1 || input > 3)
             {
                 throw new Exception();
             }
