@@ -66,7 +66,7 @@ namespace Blackjack.View
                 throw new Exception();
             }
 
-            return GameAction.Stay;
+            return (GameAction)input;
         }
         public void RenderResultOfGame()
         {
