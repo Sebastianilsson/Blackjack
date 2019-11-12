@@ -16,6 +16,12 @@ namespace BlackjackTest.View
             sut = new GameView();
         }
 
+        private void SetUserInput(string userInput)
+        {
+            var input = new StringReader(userInput);
+            Console.SetIn(input);
+        }
+
         [Fact]
         public void RenderStartMenu_ShouldRenderTheStartMenuInConsoleWhenCalled()
         {
@@ -32,10 +38,9 @@ namespace BlackjackTest.View
         [InlineData("a")]
         [InlineData("0")]
         [InlineData("4")]
-        public void GetStartMenuAction_ShouldThrowExceptionIfInputNotIntegearOneToThree(string userinput) 
+        public void GetStartMenuAction_ShouldThrowExceptionIfInputNotIntegearOneToThree(string userInput) 
         {
-            var input = new StringReader(userinput);
-            Console.SetIn(input);
+            SetUserInput(userInput);
             Assert.Throws<Exception>(() => sut.GetStartMenuAction());
         }
 
@@ -43,8 +48,7 @@ namespace BlackjackTest.View
         public void GetStartMenuAction_ShouldReturnPlayGameIfInputIsOne()
         {
             string userInput = "1";
-            var input = new StringReader(userInput);
-            Console.SetIn(input);
+            SetUserInput(userInput);
             int test;
             int.TryParse(userInput, out test);
             StartMenuAction expected = StartMenuAction.PlayGame;

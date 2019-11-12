@@ -26,7 +26,7 @@ namespace Blackjack.View
             {
                 throw new Exception();
             }
-            return (StartMenuAction)0;
+            return (StartMenuAction)1;
         }
         public void RenderRules()
         {
@@ -55,7 +55,7 @@ namespace Blackjack.View
     }
     public enum StartMenuAction
     {
-        PlayGame,
+        PlayGame = 1,
         Rules,
         Exit
     }
