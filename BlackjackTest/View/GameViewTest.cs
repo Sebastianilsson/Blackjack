@@ -44,26 +44,16 @@ namespace BlackjackTest.View
             Assert.Throws<Exception>(() => sut.GetStartMenuAction());
         }
 
-        [Fact]
-        public void GetStartMenuAction_ShouldReturnPlayGameIfInputIsOne()
+        [Theory]
+        [InlineData("1")]
+        [InlineData("2")]
+        [InlineData("3")]
+        public void GetStartMenuAction_ShouldReturnPlayGameIfInputIsOne(string userInput)
         {
-            string userInput = "1";
             SetUserInput(userInput);
-            int test;
-            int.TryParse(userInput, out test);
-            StartMenuAction expected = StartMenuAction.PlayGame;
-            StartMenuAction actual = sut.GetStartMenuAction();
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
-        public void GetStartMenuAction_ShouldReturnRulesIfInputIsTwo()
-        {
-            string userInput = "2";
-            SetUserInput(userInput);
-            int test;
-            int.TryParse(userInput, out test);
-            StartMenuAction expected = StartMenuAction.Rules;
+            int menuChoice;
+            int.TryParse(userInput, out menuChoice);
+            StartMenuAction expected = (StartMenuAction)menuChoice;
             StartMenuAction actual = sut.GetStartMenuAction();
             Assert.Equal(expected, actual);
         }
