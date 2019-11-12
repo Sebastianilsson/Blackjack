@@ -102,5 +102,16 @@ namespace BlackjackTest.View
             string actual = output.ToString();
             Assert.Equal(expected, actual);
         }
+
+        [Theory]
+        [InlineData("")]
+        [InlineData("a")]
+        [InlineData("0")]
+        [InlineData("3")]
+        public void GetGameAction_ShouldThrowExceptionIfNotIntegerOneOrTwo(string userInput)
+        {
+            SetUserInput(userInput);
+            Assert.Throws<Exception>(() => sut.GetGameAction());
+        }
     }
 }
