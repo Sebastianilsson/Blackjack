@@ -84,7 +84,7 @@ namespace Blackjack.View
 
     public enum GameAction
     {
-        Hit,
+        Hit = 1,
         Stay
     }
 }
