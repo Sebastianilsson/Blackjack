@@ -7,5 +7,6 @@ namespace Blackjack.Model
     public interface IDealer
     {
         void GetNewDeck();
+        void ShuffleDeck();
     }
 }
