@@ -50,11 +50,6 @@ namespace Blackjack.Model
             {
                 Dealer.TakeCard();
             }
-
-            if (Dealer.GetCurrentScore() == 18)
-            {
-                Dealer.TakeCard();
-            }
         }
     }
 }

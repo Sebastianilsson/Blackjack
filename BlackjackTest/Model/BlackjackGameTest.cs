@@ -110,7 +110,7 @@ namespace BlackjackTest.Model
             mockDealer.SetupSequence(dealer => dealer.GetCurrentScore())
                 .Returns(18);
             sut.DealerTakeCards();
-            mockDealer.Verify(dealer => dealer.GetCurrentScore(), Times.Never());
+            mockDealer.Verify(dealer => dealer.TakeCard(), Times.Never());
         }
 
         [Fact]
