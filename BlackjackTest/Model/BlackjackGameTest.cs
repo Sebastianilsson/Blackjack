@@ -9,17 +9,18 @@ namespace BlackjackTest.Model
 {
     public class BlackjackGameTest
     {
+        private IBlackjackGame sut;
         private Mock<IDealer> mockDealer;
 
         public BlackjackGameTest()
         {
             mockDealer = new Mock<IDealer>();
+            sut = new BlackjackGame(mockDealer.Object);
         }
 
         [Fact]
         public void DealNewHand_ShouldMakeACallToDealerToGetANewDeck()
         {
-            IBlackjackGame sut = new BlackjackGame(mockDealer.Object);
             sut.DealNewHand();
             mockDealer.Verify(dealer => dealer.GetNewDeck(), Times.Once());
         }
@@ -27,7 +28,6 @@ namespace BlackjackTest.Model
         [Fact]
         public void DealNewHand_ShouldCallToShuffleDeck()
         {
-            IBlackjackGame sut = new BlackjackGame(mockDealer.Object);
             sut.DealNewHand();
             mockDealer.Verify(dealer => dealer.ShuffleDeck(), Times.Once());
         }
