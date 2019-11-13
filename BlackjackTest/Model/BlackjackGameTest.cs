@@ -9,10 +9,17 @@ namespace BlackjackTest.Model
 {
     public class BlackjackGameTest
     {
+        private Mock<IDealer> mockDealer;
+
+        public BlackjackGameTest()
+        {
+            mockDealer = new Mock<IDealer>();
+        }
+
         [Fact]
         public void DealNewHand_ShouldMakeACallToDealerToGetANewDeck()
         {
-            var mockDealer = new Mock<IDealer>();
+            
             IBlackjackGame sut = new BlackjackGame(mockDealer.Object);
             sut.DealNewHand();
             mockDealer.Verify(dealer => dealer.GetNewDeck(), Times.Once());
