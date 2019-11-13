@@ -104,5 +104,16 @@ namespace BlackjackTest.Model
             sut.DealerTakeCards();
             mockDealer.Verify(dealer => dealer.TakeCard(), Times.Once());
         }
+
+        [Fact]
+        public void DealerTakeCards_ShouldKeepCallingTakeCardIfCurrentScoreLowerThanSeventeen()
+        {
+            mockDealer.SetupSequence(dealer => dealer.GetCurrentScore())
+                .Returns(8)
+                .Returns(12)
+                .Returns(17);
+            sut.DealerTakeCards();
+            mockDealer.Verify(dealer => dealer.TakeCard(), Times.Exactly(2));
+        }
     }
 }
