@@ -20,8 +20,8 @@ namespace Blackjack.Model
             Dealer.GetNewDeck();
             Dealer.ShuffleDeck();
             Dealer.DealCard(Player);
-            Dealer.DealCard(Player);
             Dealer.TakeCard();
+            Dealer.DealCard(Player);
             Dealer.TakeCard();
         }
 
