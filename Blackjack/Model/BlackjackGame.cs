@@ -9,6 +9,10 @@ namespace Blackjack.Model
         private IDealer Dealer { get; set; }
         private IPlayer Player { get; set; }
 
+        internal int blackjackScore = 21;
+        internal bool gameIsOver = true;
+        internal bool gameIsNotOver = false;
+
         public BlackjackGame(IDealer dealer, IPlayer player)
         {
             Dealer = dealer;
@@ -27,12 +31,12 @@ namespace Blackjack.Model
 
         public bool IsGameOver()
         {
-            if (Player.GetCurrentScore() >= 21)
+            if (Player.GetCurrentScore() >= blackjackScore)
             {
-                return true;
+                return gameIsOver;
             }
             
-            return false;
+            return gameIsNotOver;
         }
 
         public void Hit()
