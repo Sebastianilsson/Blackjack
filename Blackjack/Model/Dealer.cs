@@ -23,7 +23,12 @@ namespace Blackjack.Model
 
         public void TakeCard()
         {
+            throw new NotImplementedException();
+        }
 
+        public int GetCurrentScore()
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -6,5 +6,6 @@ namespace Blackjack.Model
 {
     public interface IPlayer
     {
+        public int GetCurrentScore();
     }
 }

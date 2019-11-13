@@ -47,5 +47,12 @@ namespace BlackjackTest.Model
             sut.DealNewHand();
             mockDealer.Verify(dealer => dealer.TakeCard(), Times.Exactly(2));
         }
+
+        [Fact]
+        public void IsGameOver_ShouldCallToCheckScoreOfPlayer()
+        {
+            sut.IsGameOver();
+            mockPlayer.Verify(player => player.GetCurrentScore());
+        }
     }
 }
