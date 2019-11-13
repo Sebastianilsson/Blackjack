@@ -15,7 +15,7 @@ namespace BlackjackTest.Model
             mockDeckAndCardFactory = new Mock<IDeckAndCardFactory>();
         }
         [Fact]
-        public void GetNewDeck_ShouldCallToCreateANewDeckIfNoDeckExists()
+        public void GetNewDeck_ShouldCallToCreateANewDeck()
         {
             Dealer sut = new Dealer(mockDeckAndCardFactory.Object);
             sut.GetNewDeck();
