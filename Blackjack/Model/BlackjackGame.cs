@@ -32,7 +32,7 @@ namespace Blackjack.Model
                 return true;
             }
             
-            return false;
+            return true;
         }
 
         public void Hit()
