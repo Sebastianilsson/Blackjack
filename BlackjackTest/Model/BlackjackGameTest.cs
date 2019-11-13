@@ -105,6 +105,15 @@ namespace BlackjackTest.Model
         }
 
         [Fact]
+        public void DealerTakeCards_ShouldNeverCallTakeCardIfCurrentScoreSeventeenOrHigher()
+        {
+            mockDealer.SetupSequence(dealer => dealer.GetCurrentScore())
+                .Returns(18);
+            sut.DealerTakeCards();
+            mockDealer.Verify(dealer => dealer.GetCurrentScore(), Times.Never());
+        }
+
+        [Fact]
         public void DealerTakeCards_ShouldCallToDealerTakeACardIfCurrentScoreLowerThanSeventeen()
         {
             GoIntoWhileLoopOnce();
