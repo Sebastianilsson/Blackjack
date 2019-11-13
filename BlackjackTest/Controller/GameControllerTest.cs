@@ -20,7 +20,7 @@ namespace BlackjackTest.Controller
             mockActionController = new Mock<IActionController>();
             mockBlackjackGame = new Mock<IBlackjackGame>();
             mockGameView = new Mock<IGameView>();
-            sut = new GameController(mockBlackjackGame.Object, mockGameView.Object);
+            sut = new GameController(mockActionController.Object, mockBlackjackGame.Object, mockGameView.Object);
             mockBlackjackGame.Setup(game => game.IsGameOver())
                 .Returns(true);
         }
