@@ -40,5 +40,12 @@ namespace BlackjackTest.Model
             sut.DealNewHand();
             mockDealer.Verify(dealer => dealer.DealCard(mockPlayer.Object), Times.Exactly(2));
         }
+
+        [Fact]
+        public void DealNewHand_ShouldDealTwoCardsToDealer()
+        {
+            sut.DealNewHand();
+            mockDealer.Verify(dealer => dealer.DealCard(mockDealer.Object), Times.Exactly(2));
+        }
     }
 }
