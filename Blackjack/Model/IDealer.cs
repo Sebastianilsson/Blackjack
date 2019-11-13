@@ -9,6 +9,6 @@ namespace Blackjack.Model
         void GetNewDeck();
         void ShuffleDeck();
         void DealCard(IPlayer player);
-        void DealCard(IDealer dealer);
+        void TakeCard();
     }
 }

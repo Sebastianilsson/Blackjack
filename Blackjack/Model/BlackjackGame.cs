@@ -21,8 +21,8 @@ namespace Blackjack.Model
             Dealer.ShuffleDeck();
             Dealer.DealCard(Player);
             Dealer.DealCard(Player);
-            Dealer.DealCard(Dealer);
-            Dealer.DealCard(Dealer);
+            Dealer.TakeCard();
+            Dealer.TakeCard();
         }
 
         public bool IsGameOver()
