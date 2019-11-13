@@ -6,16 +6,9 @@ namespace Blackjack.Model
 {
     public class Dealer : IDealer
     {
-        private IDeckAndCardFactory Factory { get; set; }
-        private IDeck Deck { get; set; }
-
-        public Dealer(IDeckAndCardFactory factory)
-        {
-            Factory = factory;
-        }
         public void GetNewDeck()
         {
-            Deck = Factory.CreateNewDeck();
+            throw new NotImplementedException();
         }
 
         public void ShuffleDeck()
