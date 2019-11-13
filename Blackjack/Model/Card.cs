@@ -6,6 +6,10 @@ namespace Blackjack.Model
 {
     public class Card
     {
+        public Card(Color color, Value value)
+        {
+
+        }
     }
 
     public enum Color

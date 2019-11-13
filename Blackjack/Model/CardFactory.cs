@@ -8,7 +8,7 @@ namespace Blackjack.Model
     {
         public Card CreateNewCard(Color color, Value value)
         {
-            throw new NotImplementedException();
+            return new Card(color, value);
         }
     }
 }
