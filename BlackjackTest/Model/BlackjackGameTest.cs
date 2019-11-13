@@ -64,5 +64,15 @@ namespace BlackjackTest.Model
             bool actual = sut.IsGameOver();
             Assert.Equal(expected, actual);
         }
+
+        [Fact]
+        public void IsGameOver_ShouldReturnTrueIfPlayerScorIsHigherThanTwentOne()
+        {
+            mockPlayer.Setup(player => player.GetCurrentScore())
+                .Returns(22);
+            bool expected = true;
+            bool actual = sut.IsGameOver();
+            Assert.Equal(expected, actual);
+        }
     }
 }
