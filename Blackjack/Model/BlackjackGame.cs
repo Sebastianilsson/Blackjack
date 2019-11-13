@@ -7,17 +7,20 @@ namespace Blackjack.Model
     public class BlackjackGame : IBlackjackGame
     {
         private IDealer Dealer { get; set; }
+        private IPlayer Player { get; set; }
 
-        public BlackjackGame(IDealer dealer)
+        public BlackjackGame(IDealer dealer, IPlayer player)
         {
             Dealer = dealer;
+            Player = player;
         }
 
         public void DealNewHand()
         {
             Dealer.GetNewDeck();
             Dealer.ShuffleDeck();
-
+            Dealer.DealCard(Player);
+            Dealer.DealCard(Player);
         }
 
         public bool IsGameOver()

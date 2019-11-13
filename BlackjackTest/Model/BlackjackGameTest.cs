@@ -16,7 +16,8 @@ namespace BlackjackTest.Model
         public BlackjackGameTest()
         {
             mockDealer = new Mock<IDealer>();
-            sut = new BlackjackGame(mockDealer.Object);
+            mockPlayer = new Mock<IPlayer>();
+            sut = new BlackjackGame(mockDealer.Object, mockPlayer.Object);
         }
 
         [Fact]
