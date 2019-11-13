@@ -15,7 +15,7 @@ namespace Blackjack.Model
 
         public void DealNewHand()
         {
-            throw new NotImplementedException();
+            Dealer.GetNewDeck();
         }
 
         public bool IsGameOver()
