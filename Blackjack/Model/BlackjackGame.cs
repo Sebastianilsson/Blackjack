@@ -27,7 +27,7 @@ namespace Blackjack.Model
 
         public bool IsGameOver()
         {
-            if (Player.GetCurrentScore() == 21)
+            if (Player.GetCurrentScore() >= 21)
             {
                 return true;
             }

@@ -55,21 +55,13 @@ namespace BlackjackTest.Model
             mockPlayer.Verify(player => player.GetCurrentScore());
         }
 
-        [Fact]
-        public void IsGameOver_ShouldReturnTrueIfPlayerScorIsTwentOne()
+        [Theory]
+        [InlineData(21)]
+        [InlineData(22)]
+        public void IsGameOver_ShouldReturnTrueIfPlayerScorIsEqualOrHigherThanTwentOne(int playerScore)
         {
             mockPlayer.Setup(player => player.GetCurrentScore())
-                .Returns(21);
-            bool expected = true;
-            bool actual = sut.IsGameOver();
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
-        public void IsGameOver_ShouldReturnTrueIfPlayerScorIsHigherThanTwentOne()
-        {
-            mockPlayer.Setup(player => player.GetCurrentScore())
-                .Returns(22);
+                .Returns(playerScore);
             bool expected = true;
             bool actual = sut.IsGameOver();
             Assert.Equal(expected, actual);
