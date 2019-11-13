@@ -9,10 +9,14 @@ namespace BlackjackTest.Model
 {
     public class DealerTest
     {
+        private Mock<IDeckAndCardFactory> mockDeckAndCardFactory;
+        public DealerTest()
+        {
+            mockDeckAndCardFactory = new Mock<IDeckAndCardFactory>();
+        }
         [Fact]
         public void GetNewDeck_ShouldCallToCreateANewDeckIfNoDeckExists()
         {
-            var mockDeckAndCardFactory = new Mock<IDeckAndCardFactory>();
             Dealer sut = new Dealer(mockDeckAndCardFactory.Object);
             sut.GetNewDeck();
             mockDeckAndCardFactory.Verify(factory => factory.CreateNewDeck(), Times.Once());
