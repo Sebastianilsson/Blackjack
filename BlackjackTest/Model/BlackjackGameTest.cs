@@ -20,6 +20,12 @@ namespace BlackjackTest.Model
             sut = new BlackjackGame(mockDealer.Object, mockPlayer.Object);
         }
 
+        private void GetCurrentPlayerScore(int scoreToReturn)
+        {
+            mockPlayer.Setup(player => player.GetCurrentScore())
+            .Returns(scoreToReturn);
+        }
+
         [Fact]
         public void DealNewHand_ShouldMakeACallToDealerToGetANewDeck()
         {
@@ -60,8 +66,7 @@ namespace BlackjackTest.Model
         [InlineData(22)]
         public void IsGameOver_ShouldReturnTrueIfPlayerScorIsEqualOrHigherThanTwentOne(int playerScore)
         {
-            mockPlayer.Setup(player => player.GetCurrentScore())
-                .Returns(playerScore);
+            GetCurrentPlayerScore(playerScore);
             bool expected = true;
             bool actual = sut.IsGameOver();
             Assert.Equal(expected, actual);
@@ -70,8 +75,8 @@ namespace BlackjackTest.Model
         [Fact]
         public void IsGameOver_ShouldReturnFalseIfPlayerScoreLowerThanTwentyOne()
         {
-            mockPlayer.Setup(player => player.GetCurrentScore())
-                .Returns(15);
+            int playerScore = 15;
+            GetCurrentPlayerScore(playerScore);
             bool expected = false;
             bool actual = sut.IsGameOver();
             Assert.Equal(expected, actual);
