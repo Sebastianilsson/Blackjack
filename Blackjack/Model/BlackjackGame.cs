@@ -47,6 +47,7 @@ namespace Blackjack.Model
         public void DealerTakeCards()
         {
             Dealer.GetCurrentScore();
+            Dealer.TakeCard();
         }
     }
 }
