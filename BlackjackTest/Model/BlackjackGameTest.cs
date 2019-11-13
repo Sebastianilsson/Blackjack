@@ -26,6 +26,13 @@ namespace BlackjackTest.Model
             .Returns(scoreToReturn);
         }
 
+        private void GoIntoWhileLoopOnce()
+        {
+            mockDealer.SetupSequence(dealer => dealer.GetCurrentScore())
+                .Returns(16)
+                .Returns(20);
+        }
+
         [Fact]
         public void DealNewHand_ShouldMakeACallToDealerToGetANewDeck()
         {
@@ -92,6 +99,9 @@ namespace BlackjackTest.Model
         [Fact]
         public void DealerTakeCards_ShouldCallToGetDealerCurrentScoreOnce()
         {
+            mockDealer.SetupSequence(dealer => dealer.GetCurrentScore())
+                .Returns(16)
+                .Returns(20);
             sut.DealerTakeCards();
             mockDealer.Verify(dealer => dealer.GetCurrentScore(), Times.AtLeastOnce());
         }
@@ -99,8 +109,9 @@ namespace BlackjackTest.Model
         [Fact]
         public void DealerTakeCards_ShouldCallToDealerTakeACardIfCurrentScoreLowerThanSeventeen()
         {
-            mockDealer.Setup(dealer => dealer.GetCurrentScore())
-                .Returns(16);
+            mockDealer.SetupSequence(dealer => dealer.GetCurrentScore())
+                .Returns(16)
+                .Returns(20);
             sut.DealerTakeCards();
             mockDealer.Verify(dealer => dealer.TakeCard(), Times.Once());
         }
