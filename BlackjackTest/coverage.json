@@ -1,17 +1,5 @@
 {
   "Blackjack.dll": {
-    "C:\\Users\\nilss\\2DV610\\Blackjack\\Blackjack\\Program.cs": {
-      "Blackjack.Program": {
-        "System.Void Blackjack.Program::Main(System.String[])": {
-          "Lines": {
-            "10": 0,
-            "11": 0,
-            "12": 0
-          },
-          "Branches": []
-        }
-      }
-    },
     "C:\\Users\\nilss\\2DV610\\Blackjack\\Blackjack\\View\\GameView.cs": {
       "Blackjack.View.GameView": {
         "System.Void Blackjack.View.GameView::RenderStartMenu()": {
@@ -199,6 +187,151 @@
             "10": 18,
             "11": 18,
             "12": 18
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\nilss\\2DV610\\Blackjack\\Blackjack\\Model\\BlackjackGame.cs": {
+      "Blackjack.Model.BlackjackGame": {
+        "Blackjack.Model.IDealer Blackjack.Model.BlackjackGame::get_Dealer()": {
+          "Lines": {
+            "9": 50
+          },
+          "Branches": []
+        },
+        "Blackjack.Model.IPlayer Blackjack.Model.BlackjackGame::get_Player()": {
+          "Lines": {
+            "10": 26
+          },
+          "Branches": []
+        },
+        "System.Void Blackjack.Model.BlackjackGame::DealNewHand()": {
+          "Lines": {
+            "23": 4,
+            "24": 4,
+            "25": 4,
+            "26": 4,
+            "27": 4,
+            "28": 4,
+            "29": 4,
+            "30": 4
+          },
+          "Branches": []
+        },
+        "System.Boolean Blackjack.Model.BlackjackGame::IsGameOver()": {
+          "Lines": {
+            "33": 4,
+            "34": 4,
+            "35": 2,
+            "36": 2,
+            "39": 2,
+            "40": 4
+          },
+          "Branches": [
+            {
+              "Line": 34,
+              "Offset": 25,
+              "EndOffset": 27,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 2
+            },
+            {
+              "Line": 34,
+              "Offset": 25,
+              "EndOffset": 37,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            }
+          ]
+        },
+        "System.Void Blackjack.Model.BlackjackGame::Hit()": {
+          "Lines": {
+            "43": 1,
+            "44": 1,
+            "45": 1
+          },
+          "Branches": []
+        },
+        "System.Void Blackjack.Model.BlackjackGame::DealerTakeCards()": {
+          "Lines": {
+            "48": 4,
+            "49": 8,
+            "50": 4,
+            "51": 4,
+            "52": 4,
+            "53": 4
+          },
+          "Branches": [
+            {
+              "Line": 49,
+              "Offset": 34,
+              "EndOffset": 3,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 4
+            },
+            {
+              "Line": 49,
+              "Offset": 34,
+              "EndOffset": 36,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 4
+            }
+          ]
+        },
+        "System.Void Blackjack.Model.BlackjackGame::.ctor(Blackjack.Model.IDealer,Blackjack.Model.IPlayer)": {
+          "Lines": {
+            "12": 13,
+            "13": 13,
+            "14": 13,
+            "16": 13,
+            "17": 13,
+            "18": 13,
+            "19": 13,
+            "20": 13
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\nilss\\2DV610\\Blackjack\\Blackjack\\Model\\Dealer.cs": {
+      "Blackjack.Model.Dealer": {
+        "System.Void Blackjack.Model.Dealer::GetNewDeck()": {
+          "Lines": {
+            "10": 0,
+            "11": 0
+          },
+          "Branches": []
+        },
+        "System.Void Blackjack.Model.Dealer::ShuffleDeck()": {
+          "Lines": {
+            "15": 0,
+            "16": 0
+          },
+          "Branches": []
+        },
+        "System.Void Blackjack.Model.Dealer::DealCard(Blackjack.Model.IPlayer)": {
+          "Lines": {
+            "20": 0,
+            "21": 0
+          },
+          "Branches": []
+        },
+        "System.Void Blackjack.Model.Dealer::TakeCard()": {
+          "Lines": {
+            "25": 0,
+            "26": 0
+          },
+          "Branches": []
+        },
+        "System.Int32 Blackjack.Model.Dealer::GetCurrentScore()": {
+          "Lines": {
+            "30": 0,
+            "31": 0
           },
           "Branches": []
         }
