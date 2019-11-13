@@ -11,6 +11,7 @@ namespace BlackjackTest.Model
     {
         private IBlackjackGame sut;
         private Mock<IDealer> mockDealer;
+        private Mock<IPlayer> mockPlayer;
 
         public BlackjackGameTest()
         {
@@ -30,6 +31,13 @@ namespace BlackjackTest.Model
         {
             sut.DealNewHand();
             mockDealer.Verify(dealer => dealer.ShuffleDeck(), Times.Once());
+        }
+
+        [Fact]
+        public void DealNewHand_ShouldDealTwoCardsToPlayer()
+        {
+            sut.DealNewHand();
+            mockDealer.Verify(dealer => dealer.DealCard(mockPlayer.Object), Times.Exactly(2));
         }
     }
 }
