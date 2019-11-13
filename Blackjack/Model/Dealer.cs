@@ -15,7 +15,7 @@ namespace Blackjack.Model
         }
         public void GetNewDeck()
         {
-            throw new NotImplementedException();
+            Deck = Factory.CreateNewDeck();
         }
 
         public void ShuffleDeck()
