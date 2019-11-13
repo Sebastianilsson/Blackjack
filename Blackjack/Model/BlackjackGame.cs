@@ -46,7 +46,7 @@ namespace Blackjack.Model
 
         public void DealerTakeCards()
         {
-            throw new NotImplementedException();
+            Dealer.GetCurrentScore();
         }
     }
 }
