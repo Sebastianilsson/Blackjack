@@ -88,5 +88,12 @@ namespace BlackjackTest.Model
             sut.Hit();
             mockDealer.Verify(dealer => dealer.DealCard(mockPlayer.Object), Times.Once());
         }
+
+        [Fact]
+        public void DealerTakeCards_ShouldCallToGetDealerCurrentScoreOnce()
+        {
+            sut.DealerTakeCards();
+            mockDealer.Verify(dealer => dealer.GetCurrentScore(), Times.Once());
+        }
     }
 }

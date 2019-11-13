@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Blackjack.Model
 {
-    public class Dealer : IDealer, IPlayer
+    public class Dealer : IDealer
     {
         public void GetNewDeck()
         {

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Blackjack.Model
 {
-    public interface IDealer
+    public interface IDealer : IPlayer
     {
         void GetNewDeck();
         void ShuffleDeck();
