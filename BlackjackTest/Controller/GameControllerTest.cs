@@ -12,10 +12,12 @@ namespace BlackjackTest.Controller
     public class GameControllerTest
     {
         private GameController sut;
+        private Mock<IActionController> mockActionController;
         private Mock<IBlackjackGame> mockBlackjackGame;
         private Mock<IGameView> mockGameView;
         public GameControllerTest()
         {
+            mockActionController = new Mock<IActionController>();
             mockBlackjackGame = new Mock<IBlackjackGame>();
             mockGameView = new Mock<IGameView>();
             sut = new GameController(mockBlackjackGame.Object, mockGameView.Object);
@@ -28,6 +30,13 @@ namespace BlackjackTest.Controller
             mockBlackjackGame.SetupSequence(game => game.IsGameOver())
                 .Returns(false)
                 .Returns(true);
+        }
+
+        [Fact]
+        public void PlayGame_ShouldCallControllerToDealANewHand()
+        {
+            sut.PlayGame();
+            mockActionController.Verify(controller => controller.DealNewHand(), Times.Once());
         }
 
         [Fact]
