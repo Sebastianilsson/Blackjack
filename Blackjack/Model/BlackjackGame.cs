@@ -28,7 +28,7 @@ namespace Blackjack.Model
         public bool IsGameOver()
         {
             Player.GetCurrentScore();
-            return false;
+            return true;
         }
 
         public void Hit()
