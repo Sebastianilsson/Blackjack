@@ -41,14 +41,14 @@ namespace BlackjackTest.Model
         }
 
         [Fact]
-        public void DealNewHand_ShouldDealTwoCardsToPlayer()
+        public void DealNewHand_ShouldCallDealTwoCardsToPlayer()
         {
             sut.DealNewHand();
             mockDealer.Verify(dealer => dealer.DealCard(mockPlayer.Object), Times.Exactly(2));
         }
 
         [Fact]
-        public void DealNewHand_ShouldDealTwoCardsToDealer()
+        public void DealNewHand_ShouldCallDealTwoCardsToDealer()
         {
             sut.DealNewHand();
             mockDealer.Verify(dealer => dealer.TakeCard(), Times.Exactly(2));
@@ -80,6 +80,13 @@ namespace BlackjackTest.Model
             bool expected = false;
             bool actual = sut.IsGameOver();
             Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void Hit_ShouldCallToDealACardToPlayer()
+        {
+            sut.Hit();
+            mockDealer.Verify(dealer => dealer.DealCard(mockPlayer.Object), Times.Once());
         }
     }
 }
