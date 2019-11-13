@@ -37,7 +37,7 @@ namespace Blackjack.Model
 
         public void Hit()
         {
-            throw new NotImplementedException();
+            Dealer.DealCard(Player);
         }
 
         public void DealerTakeCards()
