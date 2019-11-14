@@ -47,6 +47,7 @@ namespace Blackjack.Model
 
         public void AddCardToHand(ICard card)
         {
+            _hand.Add(card);
         }
     }
 }
