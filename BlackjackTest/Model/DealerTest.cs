@@ -69,5 +69,13 @@ namespace BlackjackTest.Model
             sut.TakeCard();
             Assert.NotEmpty(sut.Hand);
         }
+
+        [Fact]
+        public void GetCurrentScore_ShouldReturnZeroIfNoCardsOnHand()
+        {
+            int expected = 0;
+            int actual = sut.GetCurrentScore();
+            Assert.Equal(expected, actual);
+        }
     }
 }
