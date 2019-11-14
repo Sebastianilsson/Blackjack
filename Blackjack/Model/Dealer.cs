@@ -25,7 +25,7 @@ namespace Blackjack.Model
 
         public void DealCard(IPlayer player)
         {
-            Deck.GetACard();
+            Card card = Deck.GetACard();
         }
 
         public void TakeCard()
