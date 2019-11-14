@@ -15,7 +15,10 @@ namespace Blackjack.Model
 
         public void CreateCardsForDeck()
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < 52; i++)
+            {
+                CardFactory.CreateNewCard(Color.Clubs, Value.Ace);
+            }
         }
 
         public void Shuffle()
