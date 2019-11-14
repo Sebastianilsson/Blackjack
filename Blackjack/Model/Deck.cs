@@ -21,7 +21,8 @@ namespace Blackjack.Model
             {
                 for (int valueIndex = 0; valueIndex < (int)Value.Count; valueIndex++)
                 {
-                    CardFactory.CreateNewCard((Color)colorIndex, (Value)valueIndex);
+                    ICard card = CardFactory.CreateNewCard((Color)colorIndex, (Value)valueIndex);
+                    Cards.Add(card);
                 }
             }
         }
