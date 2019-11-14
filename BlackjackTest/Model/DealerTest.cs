@@ -79,14 +79,6 @@ namespace BlackjackTest.Model
         }
 
         [Fact]
-        public void GetCurrentScore_ShouldReturnZeroIfNoCardsOnHand()
-        {
-            int expected = 0;
-            int actual = sut.GetCurrentScore();
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
         public void GetCurrentScore_ShouldReturnTheValueOnTheCardIfOnlyOneCard()
         {
             ICard card = new Card(Color.Clubs, Value.Ace);
