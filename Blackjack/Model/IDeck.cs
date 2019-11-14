@@ -9,5 +9,6 @@ namespace Blackjack.Model
         void CreateCardsForDeck();
         void Shuffle();
         Card GetACard();
+        IReadOnlyList<ICard> GetCards();
     }
 }

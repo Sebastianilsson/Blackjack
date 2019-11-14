@@ -17,5 +17,14 @@ namespace BlackjackTest.Model
             sut.CreateCardsForDeck();
             mockCardFactory.Verify(factory => factory.CreateNewCard(It.IsAny<Color>(), It.IsAny<Value>()), Times.Exactly(52));
         }
+
+        [Fact]
+        public void GetCards_ShouldReturnAReadOnlyListWithCards()
+        {
+            var mockCardFactory = new Mock<ICardFactory>();
+            IDeck sut = new Deck(mockCardFactory.Object);
+            sut.CreateCardsForDeck();
+            Assert.IsNotType<IReadOnlyList<ICard>>(sut.GetCards());
+        }
     }
 }

@@ -35,5 +35,10 @@ namespace Blackjack.Model
         {
             throw new NotImplementedException();
         }
+
+        public IReadOnlyList<ICard> GetCards()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
