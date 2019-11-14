@@ -48,7 +48,16 @@ namespace Blackjack.Model
             {
                 score += cardValues[(int)card.GetValue()];
             }
-            
+            if (score > 21)
+            {
+                foreach (ICard c in Hand)
+                {
+                    if (c.GetValue() == Value.Ace && score > 21)
+                    {
+                        score -= 10;
+                    }
+                }
+            }
             return score;
         }
 
