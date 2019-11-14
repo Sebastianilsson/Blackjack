@@ -77,5 +77,13 @@ namespace BlackjackTest.Model
             int actual = sut.GetCurrentScore();
             Assert.Equal(expected, actual);
         }
+
+        [Fact]
+        public void AddCardToHand_ShouldAddCardToDealersHand()
+        {
+            GetCardFromDeck();
+            sut.AddCardToHand(It.IsAny<ICard>());
+            Assert.NotEmpty(sut.Hand);
+        }
     }
 }
