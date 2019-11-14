@@ -9,11 +9,18 @@ namespace BlackjackTest.Model
 {
     public class DealerTest
     {
+        private Dealer sut;
+        private Mock<IDeck> mockDeck;
+
+        public DealerTest()
+        {
+            mockDeck = new Mock<IDeck>();
+            sut = new Dealer(mockDeck.Object);
+        }
+
         [Fact]
         public void GetNewDeck_ShouldCallToCreateANewDeck()
         {
-            var mockDeck = new Mock<IDeck>();
-            Dealer sut = new Dealer(mockDeck.Object);
             sut.GetNewDeck();
             mockDeck.Verify(deck => deck.CreateCardsForDeck(), Times.Once());
         }
