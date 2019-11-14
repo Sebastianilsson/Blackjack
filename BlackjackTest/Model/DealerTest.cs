@@ -114,6 +114,7 @@ namespace BlackjackTest.Model
 
         [Theory]
         [InlineData(19, Value.Nine, Value.Nine, Value.Ace)]
+        [InlineData(12, Value.Ace, Value.Ace)]
         public void GetCurrentScore_ShouldReturnScoreMinusTenWhenTwentyOneOneAceOnHand(int expected, params Value[] cardValues)
         {
             foreach (Value cardValue in cardValues)
