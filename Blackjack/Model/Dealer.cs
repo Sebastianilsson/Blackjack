@@ -20,7 +20,7 @@ namespace Blackjack.Model
 
         public void ShuffleDeck()
         {
-            throw new NotImplementedException();
+            Deck.Shuffle();
         }
 
         public void DealCard(IPlayer player)
