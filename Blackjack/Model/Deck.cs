@@ -6,6 +6,7 @@ namespace Blackjack.Model
 {
     public class Deck : IDeck
     {
+        private List<ICard> Cards;
         private ICardFactory CardFactory { get; set; }
 
         public Deck(ICardFactory cardFactory)
@@ -15,9 +16,13 @@ namespace Blackjack.Model
 
         public void CreateCardsForDeck()
         {
-            for (int i = 0; i < 52; i++)
+            Cards = new List<ICard>();
+            for (int colorIndex = 0; colorIndex < (int)Color.Count; colorIndex++)
             {
-                CardFactory.CreateNewCard(Color.Clubs, Value.Ace);
+                for (int valueIndex = 0; valueIndex < (int)Value.Count; valueIndex++)
+                {
+                    CardFactory.CreateNewCard((Color)colorIndex, (Value)valueIndex);
+                }
             }
         }
 
