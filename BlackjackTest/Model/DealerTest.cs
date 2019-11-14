@@ -71,6 +71,14 @@ namespace BlackjackTest.Model
         }
 
         [Fact]
+        public void AddCardToHand_ShouldAddCardToDealersHand()
+        {
+            GetCardFromDeck();
+            sut.AddCardToHand(It.IsAny<ICard>());
+            Assert.NotEmpty(sut.Hand);
+        }
+
+        [Fact]
         public void GetCurrentScore_ShouldReturnZeroIfNoCardsOnHand()
         {
             int expected = 0;
@@ -79,11 +87,13 @@ namespace BlackjackTest.Model
         }
 
         [Fact]
-        public void AddCardToHand_ShouldAddCardToDealersHand()
+        public void GetCurrentScore_ShouldReturnTheValueOnTheCardIfOnlyOneCard()
         {
-            GetCardFromDeck();
-            sut.AddCardToHand(It.IsAny<ICard>());
-            Assert.NotEmpty(sut.Hand);
+            ICard card = new Card(Color.Clubs, Value.Ace);
+            sut.AddCardToHand(card);
+            int expected = 11;
+            int actual = sut.GetCurrentScore();
+            Assert.Equal(expected, actual);
         }
     }
 }
