@@ -87,5 +87,17 @@ namespace BlackjackTest.Model
             int actual = sut.GetCurrentScore();
             Assert.Equal(expected, actual);
         }
+
+        [Fact]
+        public void GetCurrentScore_ShouldReturnTheCombinedValueOnTheCardsIfMoreThanOneCard()
+        {
+            ICard card1 = new Card(Color.Clubs, Value.Ace);
+            ICard card2 = new Card(Color.Clubs, Value.Two);
+            sut.AddCardToHand(card1);
+            sut.AddCardToHand(card2);
+            int expected = 13;
+            int actual = sut.GetCurrentScore();
+            Assert.Equal(expected, actual);
+        }
     }
 }
