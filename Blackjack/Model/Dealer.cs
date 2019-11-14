@@ -36,6 +36,7 @@ namespace Blackjack.Model
         {
             ICard card = Deck.GetACard();
             _hand.Add(card);
+
         }
 
         public int GetCurrentScore()
@@ -45,7 +46,6 @@ namespace Blackjack.Model
 
         public void AddCardToHand(ICard card)
         {
-            throw new NotImplementedException();
         }
     }
 }

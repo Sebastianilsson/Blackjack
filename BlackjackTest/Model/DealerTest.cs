@@ -18,6 +18,12 @@ namespace BlackjackTest.Model
             sut = new Dealer(mockDeck.Object);
         }
 
+        private void GetCardFromDeck()
+        {
+            mockDeck.Setup(x => x.GetACard())
+                .Returns(It.IsAny<Card>());
+        }
+
         [Fact]
         public void GetNewDeck_ShouldCallToCreateANewDeck()
         {
@@ -43,8 +49,7 @@ namespace BlackjackTest.Model
         [Fact]
         public void DealCard_ShouldCallToAddCardToPlayersHand()
         {
-            mockDeck.Setup(x => x.GetACard())
-                .Returns(It.IsAny<Card>());
+            GetCardFromDeck();
             var mockPlayer = new Mock<IPlayer>();
             sut.DealCard(mockPlayer.Object);
             mockPlayer.Verify(player => player.AddCardToHand(It.IsAny<Card>()), Times.Once());
@@ -60,8 +65,7 @@ namespace BlackjackTest.Model
         [Fact]
         public void TakeCard_ShouldAddCardToDealersHand()
         {
-            mockDeck.Setup(x => x.GetACard())
-                .Returns(It.IsAny<Card>());
+            GetCardFromDeck();
             sut.TakeCard();
             Assert.NotEmpty(sut.Hand);
         }
