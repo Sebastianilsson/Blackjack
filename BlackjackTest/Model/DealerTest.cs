@@ -56,5 +56,7 @@ namespace BlackjackTest.Model
             sut.TakeCard();
             mockDeck.Verify(deck => deck.GetACard(), Times.Once());
         }
+
+        
     }
 }

@@ -32,7 +32,7 @@ namespace Blackjack.Model
 
         public void TakeCard()
         {
-            throw new NotImplementedException();
+            ICard card = Deck.GetACard();
         }
 
         public int GetCurrentScore()
