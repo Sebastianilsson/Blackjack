@@ -41,7 +41,10 @@ namespace Blackjack.Model
 
         public int GetCurrentScore()
         {
+            int[] cardValues = new int[(int)Value.Count]
+                {2, 3, 4, 5, 6, 7, 8, 9, 10, 10 ,10 ,10, 11};
             int score = 0;
+            score = cardValues[(int)Hand[0].GetValue()];
             return score;
         }
 
