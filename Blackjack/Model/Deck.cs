@@ -38,7 +38,7 @@ namespace Blackjack.Model
 
         public IReadOnlyList<ICard> GetCards()
         {
-            throw new NotImplementedException();
+            return Cards.AsReadOnly();
         }
     }
 }
