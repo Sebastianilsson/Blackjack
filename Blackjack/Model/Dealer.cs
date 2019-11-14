@@ -25,7 +25,7 @@ namespace Blackjack.Model
 
         public void DealCard(IPlayer player)
         {
-            throw new NotImplementedException();
+            Deck.GetACard();
         }
 
         public void TakeCard()
