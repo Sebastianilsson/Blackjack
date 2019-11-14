@@ -8,23 +8,26 @@ namespace BlackjackTest.Model
 {
     public class CardTest
     {
-        [Theory]
-        [InlineData(Color.Clubs, Value.Ace)]
-        public void GetColor_ShouldReturnTehColorOfTheCard(Color color, Value value)
+        private Card sut;
+
+        public CardTest()
         {
-            Card sut = new Card(color, value);
-            Color expected = color;
+            sut = new Card(Color.Clubs, Value.Ace);
+        }
+
+        [Fact]
+        public void GetColor_ShouldReturnTehColorOfTheCard()
+        {
+            Color expected = Color.Clubs;
             Color actual = sut.GetColor();
             Assert.Equal(expected, actual);
 
         }
 
-        [Theory]
-        [InlineData(Color.Clubs, Value.Ace)]
-        public void GetValue_ShouldReturnTehValueOfTheCard(Color color, Value value)
+        [Fact]
+        public void GetValue_ShouldReturnTehValueOfTheCard()
         {
-            Card sut = new Card(color, value);
-            Value expected = value;
+            Value expected = Value.Ace;
             Value actual = sut.GetValue();
             Assert.Equal(expected, actual);
 
