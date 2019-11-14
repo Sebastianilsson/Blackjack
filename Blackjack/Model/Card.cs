@@ -21,7 +21,7 @@ namespace Blackjack.Model
 
         public Value GetValue()
         {
-            throw new NotImplementedException();
+            return Value;
         }
     }
 
