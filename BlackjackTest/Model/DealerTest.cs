@@ -102,12 +102,23 @@ namespace BlackjackTest.Model
         [Theory]
         [InlineData(23, Value.Nine, Value.Nine, Value.Five)]
         [InlineData(30, Value.Ten, Value.King, Value.Queen)]
-        public void AddCardToHand_ShouldReturnScoreOverTwentOneNoAceOnHand(int expected, params Value[] cardValues)
+        public void GetCurrentScore_ShouldReturnScoreOverTwentOneNoAceOnHand(int expected, params Value[] cardValues)
         {
             foreach (Value cardValue in cardValues)
             {
                 AddMockCardToHand(cardValue);
             }
+            int actual = sut.GetCurrentScore();
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void GetCurrentScore_ShouldReturnScoreMinusTenWhenTwentyOneOneAceOnHand()
+        {
+            AddMockCardToHand(Value.Nine);
+            AddMockCardToHand(Value.Nine);
+            AddMockCardToHand(Value.Ace);
+            int expected = 19;
             int actual = sut.GetCurrentScore();
             Assert.Equal(expected, actual);
         }
