@@ -25,7 +25,9 @@ namespace Blackjack.Model
 
         public void DealCard(IPlayer player)
         {
-            Card card = Deck.GetACard();
+            ICard card = Deck.GetACard();
+            player.AddCardToHand(card);
+            
         }
 
         public void TakeCard()
@@ -34,6 +36,11 @@ namespace Blackjack.Model
         }
 
         public int GetCurrentScore()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddCardToHand(ICard card)
         {
             throw new NotImplementedException();
         }

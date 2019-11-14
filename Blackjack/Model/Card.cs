@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Blackjack.Model
 {
-    public class Card
+    public class Card :ICard
     {
         private Color Color { get;  set; }
         private Value Value { get; set; }

@@ -7,5 +7,6 @@ namespace Blackjack.Model
     public interface IPlayer
     {
         public int GetCurrentScore();
+        public void AddCardToHand(ICard card);
     }
 }

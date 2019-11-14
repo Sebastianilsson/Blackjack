@@ -39,5 +39,15 @@ namespace BlackjackTest.Model
             sut.DealCard(mockPlayer.Object);
             mockDeck.Verify(deck => deck.GetACard(), Times.Once());
         }
+
+        [Fact]
+        public void DealCard_ShouldCallToAddCardToPlayersHand()
+        {
+            mockDeck.Setup(x => x.GetACard())
+                .Returns(It.IsAny<Card>());
+            var mockPlayer = new Mock<IPlayer>();
+            sut.DealCard(mockPlayer.Object);
+            mockPlayer.Verify(player => player.AddCardToHand(It.IsAny<Card>()), Times.Once());
+        }
     }
 }
