@@ -41,7 +41,8 @@ namespace Blackjack.Model
 
         public int GetCurrentScore()
         {
-            return 0;
+            int score = 0;
+            return score;
         }
 
         public void AddCardToHand(ICard card)
