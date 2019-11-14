@@ -4,6 +4,7 @@ using System.Text;
 using Xunit;
 using Moq;
 using Blackjack.Model;
+using System.Linq;
 
 namespace BlackjackTest.Model
 {
@@ -38,6 +39,17 @@ namespace BlackjackTest.Model
             sut.CreateCardsForDeck();
             var cards = sut.GetCards();
             int actual = cards.Count;
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void CreateCardsForDeck_ShouldCreateFiftyTwoDifferentCards()
+        {
+            int expected = 52;
+            sut.CreateCardsForDeck();
+            var cards = sut.GetCards();
+            IEnumerable<ICard> uniqueCards = cards.Distinct();
+            int actual = uniqueCards.Count();
             Assert.Equal(expected, actual);
         }
     }
