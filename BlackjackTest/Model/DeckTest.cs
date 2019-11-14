@@ -9,11 +9,17 @@ namespace BlackjackTest.Model
 {
     public class DeckTest
     {
+        private Mock<ICardFactory> mockCardFactory;
+        private Deck sut;
+        public DeckTest()
+        {
+            mockCardFactory = new Mock<ICardFactory>();
+            sut = new Deck(mockCardFactory.Object);
+        }
+
         [Fact]
         public void CreateCardsForDeck_ShouldCallFiftyTwoTimesToCreateANewCard()
         {
-            var mockCardFactory = new Mock<ICardFactory>();
-            IDeck sut = new Deck(mockCardFactory.Object);
             sut.CreateCardsForDeck();
             mockCardFactory.Verify(factory => factory.CreateNewCard(It.IsAny<Color>(), It.IsAny<Value>()), Times.Exactly(52));
         }
@@ -21,8 +27,6 @@ namespace BlackjackTest.Model
         [Fact]
         public void GetCards_ShouldReturnAReadOnlyListWithCards()
         {
-            var mockCardFactory = new Mock<ICardFactory>();
-            IDeck sut = new Deck(mockCardFactory.Object);
             sut.CreateCardsForDeck();
             Assert.IsNotType<IReadOnlyList<ICard>>(sut.GetCards());
         }
