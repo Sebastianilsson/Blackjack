@@ -6,6 +6,7 @@ namespace Blackjack.Model
 {
     public interface IPlayer
     {
+        public IReadOnlyList<ICard> Hand { get; }
         public int GetCurrentScore();
         public void AddCardToHand(ICard card);
     }

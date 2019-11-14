@@ -57,6 +57,13 @@ namespace BlackjackTest.Model
             mockDeck.Verify(deck => deck.GetACard(), Times.Once());
         }
 
-        
+        [Fact]
+        public void TakeCard_ShouldAddCardToDealersHand()
+        {
+            mockDeck.Setup(x => x.GetACard())
+                .Returns(It.IsAny<Card>());
+            sut.TakeCard();
+            Assert.NotEmpty(sut.Hand);
+        }
     }
 }

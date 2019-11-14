@@ -6,6 +6,8 @@ namespace Blackjack.Model
 {
     public class Dealer : IDealer
     {
+        public IReadOnlyList<ICard> Hand { get { return _hand.AsReadOnly(); } }
+        private List<ICard> _hand = new List<ICard>();
         private IDeck Deck { get; set; }
 
         public Dealer(IDeck deck)
