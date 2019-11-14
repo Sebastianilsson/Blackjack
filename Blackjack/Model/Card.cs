@@ -18,6 +18,11 @@ namespace Blackjack.Model
         {
             return Color;
         }
+
+        public Value GetValue()
+        {
+            throw new NotImplementedException();
+        }
     }
 
     public enum Color

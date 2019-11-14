@@ -18,5 +18,16 @@ namespace BlackjackTest.Model
             Assert.Equal(expected, actual);
 
         }
+
+        [Theory]
+        [InlineData(Color.Clubs, Value.Ace)]
+        public void GetValue_ShouldReturnTehValueOfTheCard(Color color, Value value)
+        {
+            Card sut = new Card(color, value);
+            Value expected = value;
+            Value actual = sut.GetValue();
+            Assert.Equal(expected, actual);
+
+        }
     }
 }
