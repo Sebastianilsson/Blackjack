@@ -6,6 +6,13 @@ namespace Blackjack.Model
 {
     public class Dealer : IDealer
     {
+        private IDeck Deck { get; set; }
+
+        public Dealer(IDeck deck)
+        {
+            Deck = deck;
+        }
+
         public void GetNewDeck()
         {
             throw new NotImplementedException();
