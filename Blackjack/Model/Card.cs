@@ -10,12 +10,13 @@ namespace Blackjack.Model
         private Value Value { get; set; }
         public Card(Color color, Value value)
         {
-
+            Color = color;
+            Value = value;
         }
 
         public Color GetColor()
         {
-            throw new NotImplementedException();
+            return Color;
         }
     }
 
