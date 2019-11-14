@@ -99,13 +99,15 @@ namespace BlackjackTest.Model
             Assert.Equal(expected, actual);
         }
 
-        [Fact]
-        public void AddCardToHand_ShouldReturnScoreOverTwentOneNoAceOnHand()
+        [Theory]
+        [InlineData(23, Value.Nine, Value.Nine, Value.Five)]
+        [InlineData(30, Value.Ten, Value.King, Value.Queen)]
+        public void AddCardToHand_ShouldReturnScoreOverTwentOneNoAceOnHand(int expected, params Value[] cardValues)
         {
-            AddMockCardToHand(Value.Nine);
-            AddMockCardToHand(Value.Nine);
-            AddMockCardToHand(Value.Five);
-            int expected = 23;
+            foreach (Value cardValue in cardValues)
+            {
+                AddMockCardToHand(cardValue);
+            }
             int actual = sut.GetCurrentScore();
             Assert.Equal(expected, actual);
         }
