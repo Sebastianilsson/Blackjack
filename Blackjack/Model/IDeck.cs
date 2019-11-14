@@ -7,5 +7,6 @@ namespace Blackjack.Model
     public interface IDeck
     {
         void CreateCardsForDeck();
+        void Shuffle();
     }
 }

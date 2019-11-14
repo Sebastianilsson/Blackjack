@@ -24,5 +24,12 @@ namespace BlackjackTest.Model
             sut.GetNewDeck();
             mockDeck.Verify(deck => deck.CreateCardsForDeck(), Times.Once());
         }
+
+        [Fact]
+        public void GetNewDeck_ShouldCallToShuffleDeck()
+        {
+            sut.ShuffleDeck();
+            mockDeck.Verify(deck => deck.Shuffle(), Times.Once());
+        }
     }
 }
