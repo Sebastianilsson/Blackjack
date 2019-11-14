@@ -16,6 +16,7 @@ namespace BlackjackTest.Model
             Color expected = color;
             Color actual = sut.GetColor();
             Assert.Equal(expected, actual);
+
         }
     }
 }
