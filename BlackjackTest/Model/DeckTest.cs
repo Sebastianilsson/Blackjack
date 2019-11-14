@@ -30,5 +30,15 @@ namespace BlackjackTest.Model
             sut.CreateCardsForDeck();
             Assert.IsNotType<IReadOnlyList<ICard>>(sut.GetCards());
         }
+
+        [Fact]
+        public void CreateCardsForDeck_ShouldCreateFiftyTwoCards()
+        {
+            int expected = 52;
+            sut.CreateCardsForDeck();
+            var cards = sut.GetCards();
+            int actual = cards.Count;
+            Assert.Equal(expected, actual);
+        }
     }
 }
