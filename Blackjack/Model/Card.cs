@@ -6,9 +6,16 @@ namespace Blackjack.Model
 {
     public class Card
     {
+        private Color Color { get;  set; }
+        private Value Value { get; set; }
         public Card(Color color, Value value)
         {
 
+        }
+
+        public Color GetColor()
+        {
+            throw new NotImplementedException();
         }
     }
 
