@@ -26,10 +26,18 @@ namespace BlackjackTest.Model
         }
 
         [Fact]
-        public void GetNewDeck_ShouldCallToShuffleDeck()
+        public void ShuffleDeck_ShouldCallToShuffleDeck()
         {
             sut.ShuffleDeck();
             mockDeck.Verify(deck => deck.Shuffle(), Times.Once());
+        }
+
+        [Fact]
+        public void DealCard_ShouldCallToGetACardFromDeck()
+        {
+            var mockPlayer = new Mock<IPlayer>();
+            sut.DealCard(mockPlayer.Object);
+            mockDeck.Verify(deck => deck.GetACard(), Times.Once());
         }
     }
 }

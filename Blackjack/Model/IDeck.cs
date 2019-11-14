@@ -8,5 +8,6 @@ namespace Blackjack.Model
     {
         void CreateCardsForDeck();
         void Shuffle();
+        Card GetACard();
     }
 }
