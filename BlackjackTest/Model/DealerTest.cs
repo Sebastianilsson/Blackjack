@@ -24,6 +24,13 @@ namespace BlackjackTest.Model
                 .Returns(It.IsAny<Card>());
         }
 
+        private void AddMockCardToHand(Value value)
+        {
+            var mockCard1 = new Mock<ICard>();
+            mockCard1.Setup(card => card.GetValue()).Returns(value);
+            sut.AddCardToHand(mockCard1.Object);
+        }
+
         [Fact]
         public void GetNewDeck_ShouldCallToCreateANewDeck()
         {
@@ -78,24 +85,16 @@ namespace BlackjackTest.Model
             Assert.NotEmpty(sut.Hand);
         }
 
-        [Fact]
-        public void GetCurrentScore_ShouldReturnTheValueOnTheCardIfOnlyOneCard()
+        [Theory]
+        [InlineData(11 ,Value.Ace)]
+        [InlineData(13, Value.Ace, Value.Two)]
+        [InlineData(15, Value.Two, Value.Seven, Value.Four, Value.Two)]
+        public void GetCurrentScore_ShouldReturnTheCombinedValueOnTheCardOrCards(int expected, params Value[] cardValues)
         {
-            ICard card = new Card(Color.Clubs, Value.Ace);
-            sut.AddCardToHand(card);
-            int expected = 11;
-            int actual = sut.GetCurrentScore();
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
-        public void GetCurrentScore_ShouldReturnTheCombinedValueOnTheCardsIfMoreThanOneCard()
-        {
-            ICard card1 = new Card(Color.Clubs, Value.Ace);
-            ICard card2 = new Card(Color.Clubs, Value.Two);
-            sut.AddCardToHand(card1);
-            sut.AddCardToHand(card2);
-            int expected = 13;
+            foreach (Value cardValue in cardValues)
+            {
+                AddMockCardToHand(cardValue);
+            }
             int actual = sut.GetCurrentScore();
             Assert.Equal(expected, actual);
         }
