@@ -35,6 +35,7 @@ namespace Blackjack.Model
         public void TakeCard()
         {
             ICard card = Deck.GetACard();
+            _hand.Add(card);
         }
 
         public int GetCurrentScore()
