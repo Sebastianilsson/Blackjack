@@ -30,7 +30,9 @@ namespace Blackjack.Model
 
         public void Shuffle()
         {
-            throw new NotImplementedException();
+            ICard value = Cards[0];
+            Cards[0] = Cards[13];
+            Cards[13] = value;
         }
 
         public ICard GetACard()
