@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Blackjack.Model
@@ -34,7 +35,7 @@ namespace Blackjack.Model
 
         public ICard GetACard()
         {
-            return new Card(Color.Clubs, Value.Ace);
+            return Cards.First();
         }
 
         public IReadOnlyList<ICard> GetCards()

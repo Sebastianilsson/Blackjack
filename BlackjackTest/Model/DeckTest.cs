@@ -115,25 +115,12 @@ namespace BlackjackTest.Model
         }
 
         [Fact]
-        public void GetACard_ShouldReturnACardObject()
+        public void GetACard_ShouldReturnACardObjectFromTheDeck()
         {
             SetupToGetMockedCards();
             sut.CreateCardsForDeck();
             Assert.IsType<Card>(sut.GetACard());
         }
 
-    }
-
-    class ItemEqualityComparer : IEqualityComparer<ICard>
-    {
-        public bool Equals(ICard x, ICard y)
-        {
-            return x.GetColor() == y.GetColor() && x.GetValue() == y.GetValue();
-        }
-
-        public int GetHashCode(ICard obj)
-        {
-            return obj.GetColor().GetHashCode() + obj.GetValue().GetHashCode();
-        }
     }
 }
