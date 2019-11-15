@@ -147,8 +147,8 @@ namespace BlackjackTest.Model
             SetupToGetMockedCards();
             compareDeck.CreateCardsForDeck();
             sut.Shuffle();
-            bool sameOrder = Enumerable.SequenceEqual(sut.GetCards(), compareDeck.GetCards(), new DeckComparer());
-             //sut.GetCards().SequenceEqual(compareDeck.GetCards());
+            bool sameOrder = Enumerable.SequenceEqual(sut.GetCards(), compareDeck.GetCards(), 
+                new DeckComparer());
             Assert.False(sameOrder);
         }
 

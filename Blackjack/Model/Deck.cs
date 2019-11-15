@@ -30,9 +30,9 @@ namespace Blackjack.Model
 
         public void Shuffle()
         {
-            ICard value = Cards[0];
+            ICard card = Cards[0];
             Cards[0] = Cards[13];
-            Cards[13] = value;
+            Cards[13] = card;
         }
 
         public ICard GetACard()
