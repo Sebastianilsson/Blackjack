@@ -11,12 +11,14 @@ namespace BlackjackTest.Model
 {
     public class DeckTest
     {
+        private Mock<Random> mockRandom;
         private Mock<ICardFactory> mockCardFactory;
         private Deck sut;
         public DeckTest()
         {
+            mockRandom = new Mock<Random>();
             mockCardFactory = new Mock<ICardFactory>();
-            sut = new Deck(mockCardFactory.Object);
+            sut = new Deck(mockCardFactory.Object, mockRandom.Object);
         }
 
         private void CreateDeckWithMockedCards()
@@ -143,7 +145,7 @@ namespace BlackjackTest.Model
         public void Shuffle_ShouldTakeACardAndPutItSomeWhereElseInTheDeck()
         {
             CreateDeckWithMockedCards();
-            Deck compareDeck = new Deck(mockCardFactory.Object);
+            Deck compareDeck = new Deck(mockCardFactory.Object, mockRandom.Object);
             SetupToGetMockedCards();
             compareDeck.CreateCardsForDeck();
             sut.Shuffle();
@@ -152,21 +154,27 @@ namespace BlackjackTest.Model
             Assert.False(sameOrder);
         }
 
-        class DeckComparer : IEqualityComparer<ICard>
+        [Fact]
+        public void Shuffle_ShouldCallRandomNumberToShuffleTheDeck()
         {
-            public bool Equals(ICard sutCard, ICard compareCard)
-            {
-                return sutCard.GetColor() == compareCard.GetColor() &&
-                     sutCard.GetValue() == compareCard.GetValue();
-            }
-
-            public int GetHashCode(ICard card)
-            {
-                return card.GetHashCode();
-            }
+            CreateDeckWithMockedCards();
+            sut.Shuffle();
+            mockRandom.Verify(random => random.Next(It.IsAny<int>()), Times.AtLeast(1));
         }
 
     }
 
-    
+    class DeckComparer : IEqualityComparer<ICard>
+    {
+        public bool Equals(ICard sutCard, ICard compareCard)
+        {
+            return sutCard.GetColor() == compareCard.GetColor() &&
+                 sutCard.GetValue() == compareCard.GetValue();
+        }
+
+        public int GetHashCode(ICard card)
+        {
+            return card.GetHashCode();
+        }
+    }
 }

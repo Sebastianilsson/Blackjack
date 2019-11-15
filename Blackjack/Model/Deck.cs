@@ -8,10 +8,12 @@ namespace Blackjack.Model
     public class Deck : IDeck
     {
         private List<ICard> Cards;
+        private Random Random { get; set; }
         private ICardFactory CardFactory { get; set; }
 
-        public Deck(ICardFactory cardFactory)
+        public Deck(ICardFactory cardFactory, Random random)
         {
+            Random = random;
             CardFactory = cardFactory;
         }
 
@@ -30,9 +32,9 @@ namespace Blackjack.Model
 
         public void Shuffle()
         {
-            ICard card = Cards[0];
-            Cards[0] = Cards[13];
-            Cards[13] = card;
+                ICard card = Cards[0];
+                Cards[0] = Cards[13];
+                Cards[13] = card;
         }
 
         public ICard GetACard()
