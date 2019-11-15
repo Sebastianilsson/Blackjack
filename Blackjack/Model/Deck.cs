@@ -17,10 +17,13 @@ namespace Blackjack.Model
         public void CreateCardsForDeck()
         {
             Cards = new List<ICard>();
-            for (int i = 0; i < 52; i++)
+            for (int colorIndex = 0; colorIndex < (int)Color.Count; colorIndex++)
             {
-                ICard card = CardFactory.CreateNewCard(Color.Clubs, Value.Ace);
-                Cards.Add(card);
+                for (int valueIndex = 0; valueIndex < (int)Value.Count; valueIndex++)
+                {
+                    ICard card = CardFactory.CreateNewCard((Color)colorIndex, (Value)valueIndex);
+                    Cards.Add(card);
+                }
             }
         }
 

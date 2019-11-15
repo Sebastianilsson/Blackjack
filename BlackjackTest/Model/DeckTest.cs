@@ -6,6 +6,7 @@ using Moq;
 using Blackjack.Model;
 using System.Linq;
 
+
 namespace BlackjackTest.Model
 {
     public class DeckTest
@@ -35,6 +36,8 @@ namespace BlackjackTest.Model
         [Fact]
         public void CreateCardsForDeck_ShouldCreateFiftyTwoCards()
         {
+            mockCardFactory.Setup(x => x.CreateNewCard(It.IsAny<Color>(), It.IsAny<Value>()))
+                .Returns(It.IsAny<Card>());
             int expected = 52;
             sut.CreateCardsForDeck();
             var cards = sut.GetCards();
@@ -45,12 +48,81 @@ namespace BlackjackTest.Model
         [Fact]
         public void CreateCardsForDeck_ShouldCreateFiftyTwoDifferentCards()
         {
+
+            mockCardFactory.SetupSequence(x => x.CreateNewCard(It.IsAny<Color>(), It.IsAny<Value>()))
+                .Returns(new Card(Color.Hearts, Value.Two))
+                .Returns(new Card(Color.Hearts, Value.Three))
+                .Returns(new Card(Color.Hearts, Value.Four))
+                .Returns(new Card(Color.Hearts, Value.Five))
+                .Returns(new Card(Color.Hearts, Value.Six))
+                .Returns(new Card(Color.Hearts, Value.Seven))
+                .Returns(new Card(Color.Hearts, Value.Eight))
+                .Returns(new Card(Color.Hearts, Value.Nine))
+                .Returns(new Card(Color.Hearts, Value.Ten))
+                .Returns(new Card(Color.Hearts, Value.Jack))
+                .Returns(new Card(Color.Hearts, Value.Queen))
+                .Returns(new Card(Color.Hearts, Value.King))
+                .Returns(new Card(Color.Hearts, Value.Ace))
+                .Returns(new Card(Color.Clubs, Value.Two))
+                .Returns(new Card(Color.Clubs, Value.Three))
+                .Returns(new Card(Color.Clubs, Value.Four))
+                .Returns(new Card(Color.Clubs, Value.Five))
+                .Returns(new Card(Color.Clubs, Value.Six))
+                .Returns(new Card(Color.Clubs, Value.Seven))
+                .Returns(new Card(Color.Clubs, Value.Eight))
+                .Returns(new Card(Color.Clubs, Value.Nine))
+                .Returns(new Card(Color.Clubs, Value.Ten))
+                .Returns(new Card(Color.Clubs, Value.Jack))
+                .Returns(new Card(Color.Clubs, Value.Queen))
+                .Returns(new Card(Color.Clubs, Value.King))
+                .Returns(new Card(Color.Clubs, Value.Ace))
+                .Returns(new Card(Color.Spades, Value.Two))
+                .Returns(new Card(Color.Spades, Value.Three))
+                .Returns(new Card(Color.Spades, Value.Four))
+                .Returns(new Card(Color.Spades, Value.Five))
+                .Returns(new Card(Color.Spades, Value.Six))
+                .Returns(new Card(Color.Spades, Value.Seven))
+                .Returns(new Card(Color.Spades, Value.Eight))
+                .Returns(new Card(Color.Spades, Value.Nine))
+                .Returns(new Card(Color.Spades, Value.Ten))
+                .Returns(new Card(Color.Spades, Value.Jack))
+                .Returns(new Card(Color.Spades, Value.Queen))
+                .Returns(new Card(Color.Spades, Value.King))
+                .Returns(new Card(Color.Spades, Value.Ace))
+                .Returns(new Card(Color.Diamonds, Value.Two))
+                .Returns(new Card(Color.Diamonds, Value.Three))
+                .Returns(new Card(Color.Diamonds, Value.Four))
+                .Returns(new Card(Color.Diamonds, Value.Five))
+                .Returns(new Card(Color.Diamonds, Value.Six))
+                .Returns(new Card(Color.Diamonds, Value.Seven))
+                .Returns(new Card(Color.Diamonds, Value.Eight))
+                .Returns(new Card(Color.Diamonds, Value.Nine))
+                .Returns(new Card(Color.Diamonds, Value.Ten))
+                .Returns(new Card(Color.Diamonds, Value.Jack))
+                .Returns(new Card(Color.Diamonds, Value.Queen))
+                .Returns(new Card(Color.Diamonds, Value.King))
+                .Returns(new Card(Color.Diamonds, Value.Ace));
             int expected = 52;
             sut.CreateCardsForDeck();
             var cards = sut.GetCards();
-            IEnumerable<ICard> uniqueCards = cards.Distinct();
+            var uniqueCards = cards.Distinct();
             int actual = uniqueCards.Count();
             Assert.Equal(expected, actual);
+        }
+
+
+    }
+
+    class ItemEqualityComparer : IEqualityComparer<ICard>
+    {
+        public bool Equals(ICard x, ICard y)
+        {
+            return x.GetColor() == y.GetColor() && x.GetValue() == y.GetValue();
+        }
+
+        public int GetHashCode(ICard obj)
+        {
+            return obj.GetColor().GetHashCode() + obj.GetValue().GetHashCode();
         }
     }
 }
