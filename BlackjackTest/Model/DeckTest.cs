@@ -122,5 +122,15 @@ namespace BlackjackTest.Model
             Assert.IsType<Card>(sut.GetACard());
         }
 
+        [Fact]
+        public void GetACard_ShouldRemoveACardFromTheDeck()
+        {
+            SetupToGetMockedCards();
+            sut.CreateCardsForDeck();
+            int expected = 51;
+            int actual = sut.GetCards().Count();
+            Assert.Equal(expected, actual);
+        }
+
     }
 }
