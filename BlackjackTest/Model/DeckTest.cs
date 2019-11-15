@@ -128,6 +128,7 @@ namespace BlackjackTest.Model
             SetupToGetMockedCards();
             sut.CreateCardsForDeck();
             int expected = 51;
+            sut.GetACard();
             int actual = sut.GetCards().Count();
             Assert.Equal(expected, actual);
         }

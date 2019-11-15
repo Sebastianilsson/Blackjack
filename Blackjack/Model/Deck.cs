@@ -35,6 +35,7 @@ namespace Blackjack.Model
 
         public ICard GetACard()
         {
+            Cards.RemoveAt(1);
             return Cards.First();
         }
 
