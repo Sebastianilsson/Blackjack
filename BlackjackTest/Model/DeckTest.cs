@@ -19,36 +19,8 @@ namespace BlackjackTest.Model
             sut = new Deck(mockCardFactory.Object);
         }
 
-        [Fact]
-        public void CreateCardsForDeck_ShouldCallFiftyTwoTimesToCreateANewCard()
+        private void SetupToGetMockedCards()
         {
-            sut.CreateCardsForDeck();
-            mockCardFactory.Verify(factory => factory.CreateNewCard(It.IsAny<Color>(), It.IsAny<Value>()), Times.Exactly(52));
-        }
-
-        [Fact]
-        public void GetCards_ShouldReturnAReadOnlyListWithCards()
-        {
-            sut.CreateCardsForDeck();
-            Assert.IsNotType<IReadOnlyList<ICard>>(sut.GetCards());
-        }
-
-        [Fact]
-        public void CreateCardsForDeck_ShouldCreateFiftyTwoCards()
-        {
-            mockCardFactory.Setup(x => x.CreateNewCard(It.IsAny<Color>(), It.IsAny<Value>()))
-                .Returns(It.IsAny<Card>());
-            int expected = 52;
-            sut.CreateCardsForDeck();
-            var cards = sut.GetCards();
-            int actual = cards.Count;
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
-        public void CreateCardsForDeck_ShouldCreateFiftyTwoDifferentCards()
-        {
-
             mockCardFactory.SetupSequence(x => x.CreateNewCard(It.IsAny<Color>(), It.IsAny<Value>()))
                 .Returns(new Card(Color.Hearts, Value.Two))
                 .Returns(new Card(Color.Hearts, Value.Three))
@@ -102,6 +74,38 @@ namespace BlackjackTest.Model
                 .Returns(new Card(Color.Diamonds, Value.Queen))
                 .Returns(new Card(Color.Diamonds, Value.King))
                 .Returns(new Card(Color.Diamonds, Value.Ace));
+        }
+
+        [Fact]
+        public void CreateCardsForDeck_ShouldCallFiftyTwoTimesToCreateANewCard()
+        {
+            sut.CreateCardsForDeck();
+            mockCardFactory.Verify(factory => factory.CreateNewCard(It.IsAny<Color>(), It.IsAny<Value>()), Times.Exactly(52));
+        }
+
+        [Fact]
+        public void GetCards_ShouldReturnAReadOnlyListWithCards()
+        {
+            sut.CreateCardsForDeck();
+            Assert.IsNotType<IReadOnlyList<ICard>>(sut.GetCards());
+        }
+
+        [Fact]
+        public void CreateCardsForDeck_ShouldCreateFiftyTwoCards()
+        {
+            mockCardFactory.Setup(x => x.CreateNewCard(It.IsAny<Color>(), It.IsAny<Value>()))
+                .Returns(It.IsAny<Card>());
+            int expected = 52;
+            sut.CreateCardsForDeck();
+            var cards = sut.GetCards();
+            int actual = cards.Count;
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void CreateCardsForDeck_ShouldCreateFiftyTwoDifferentCards()
+        {
+            SetupToGetMockedCards();
             int expected = 52;
             sut.CreateCardsForDeck();
             var cards = sut.GetCards();
