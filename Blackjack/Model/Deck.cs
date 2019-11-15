@@ -35,8 +35,9 @@ namespace Blackjack.Model
 
         public ICard GetACard()
         {
-            Cards.RemoveAt(1);
-            return Cards.First();
+            ICard card = Cards.First();
+            Cards.RemoveAt(0);
+            return card;
         }
 
         public IReadOnlyList<ICard> GetCards()
