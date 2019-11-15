@@ -32,9 +32,15 @@ namespace Blackjack.Model
 
         public void Shuffle()
         {
+            int cardIndex = Cards.Count();
+            while (cardIndex > 1)
+            {
+                cardIndex--;
+                int changeIndex = Random.Next(cardIndex + 1);
                 ICard card = Cards[0];
                 Cards[0] = Cards[13];
                 Cards[13] = card;
+            }
         }
 
         public ICard GetACard()
