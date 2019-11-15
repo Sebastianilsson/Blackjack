@@ -19,6 +19,12 @@ namespace BlackjackTest.Model
             sut = new Deck(mockCardFactory.Object);
         }
 
+        private void CreateDeckWithMockedCards()
+        {
+            SetupToGetMockedCards();
+            sut.CreateCardsForDeck();
+        }
+
         private void SetupToGetMockedCards()
         {
             mockCardFactory.SetupSequence(x => x.CreateNewCard(It.IsAny<Color>(), It.IsAny<Value>()))
@@ -84,13 +90,6 @@ namespace BlackjackTest.Model
         }
 
         [Fact]
-        public void GetCards_ShouldReturnAReadOnlyListWithCards()
-        {
-            sut.CreateCardsForDeck();
-            Assert.IsNotType<IReadOnlyList<ICard>>(sut.GetCards());
-        }
-
-        [Fact]
         public void CreateCardsForDeck_ShouldCreateFiftyTwoCards()
         {
             mockCardFactory.Setup(x => x.CreateNewCard(It.IsAny<Color>(), It.IsAny<Value>()))
@@ -105,9 +104,8 @@ namespace BlackjackTest.Model
         [Fact]
         public void CreateCardsForDeck_ShouldCreateFiftyTwoDifferentCards()
         {
-            SetupToGetMockedCards();
+            CreateDeckWithMockedCards();
             int expected = 52;
-            sut.CreateCardsForDeck();
             var cards = sut.GetCards();
             var uniqueCards = cards.Distinct();
             int actual = uniqueCards.Count();
@@ -117,16 +115,14 @@ namespace BlackjackTest.Model
         [Fact]
         public void GetACard_ShouldReturnACardObjectFromTheDeck()
         {
-            SetupToGetMockedCards();
-            sut.CreateCardsForDeck();
+            CreateDeckWithMockedCards();
             Assert.IsType<Card>(sut.GetACard());
         }
 
         [Fact]
         public void GetACard_ShouldRemoveACardFromTheDeck()
         {
-            SetupToGetMockedCards();
-            sut.CreateCardsForDeck();
+            CreateDeckWithMockedCards();
             int expected = 51;
             sut.GetACard();
             int actual = sut.GetCards().Count();
