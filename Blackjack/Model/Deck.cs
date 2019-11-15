@@ -32,9 +32,9 @@ namespace Blackjack.Model
             throw new NotImplementedException();
         }
 
-        public Card GetACard()
+        public ICard GetACard()
         {
-            throw new NotImplementedException();
+            return new Card(Color.Clubs, Value.Ace);
         }
 
         public IReadOnlyList<ICard> GetCards()
