@@ -139,5 +139,34 @@ namespace BlackjackTest.Model
             Assert.False(exists);
         }
 
+        [Fact]
+        public void Shuffle_ShouldTakeACardAndPutItSomeWhereElseInTheDeck()
+        {
+            CreateDeckWithMockedCards();
+            Deck compareDeck = new Deck(mockCardFactory.Object);
+            SetupToGetMockedCards();
+            compareDeck.CreateCardsForDeck();
+            sut.Shuffle();
+            bool sameOrder = Enumerable.SequenceEqual(sut.GetCards(), compareDeck.GetCards(), new DeckComparer());
+             //sut.GetCards().SequenceEqual(compareDeck.GetCards());
+            Assert.False(sameOrder);
+        }
+
+        class DeckComparer : IEqualityComparer<ICard>
+        {
+            public bool Equals(ICard sutCard, ICard compareCard)
+            {
+                return sutCard.GetColor() == compareCard.GetColor() &&
+                     sutCard.GetValue() == compareCard.GetValue();
+            }
+
+            public int GetHashCode(ICard card)
+            {
+                return card.GetHashCode();
+            }
+        }
+
     }
+
+    
 }
