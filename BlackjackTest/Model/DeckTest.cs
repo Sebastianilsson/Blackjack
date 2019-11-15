@@ -134,7 +134,8 @@ namespace BlackjackTest.Model
         {
             CreateDeckWithMockedCards();
             ICard card = sut.GetACard();
-            bool exists = sut.GetCards().Any(x => x.GetColor() == card.GetColor() && x.GetValue() == card.GetValue());
+            bool exists = sut.GetCards().Any(x => x.GetColor() == card.GetColor() && 
+                x.GetValue() == card.GetValue());
             Assert.False(exists);
         }
 
