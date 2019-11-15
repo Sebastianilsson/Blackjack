@@ -142,7 +142,7 @@ namespace BlackjackTest.Model
         }
 
         [Fact]
-        public void Shuffle_ShouldTakeACardAndPutItSomeWhereElseInTheDeck()
+        public void Shuffle_ShouldDeckShouldNotBeInSameOrderAfterShuffle()
         {
             CreateDeckWithMockedCards();
             Deck compareDeck = new Deck(mockCardFactory.Object, mockRandom.Object);
