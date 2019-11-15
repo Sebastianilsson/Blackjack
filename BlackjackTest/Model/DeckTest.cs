@@ -114,6 +114,13 @@ namespace BlackjackTest.Model
             Assert.Equal(expected, actual);
         }
 
+        [Fact]
+        public void GetACard_ShouldReturnACardObject()
+        {
+            SetupToGetMockedCards();
+            sut.CreateCardsForDeck();
+            Assert.IsType<Card>(sut.GetACard());
+        }
 
     }
 
