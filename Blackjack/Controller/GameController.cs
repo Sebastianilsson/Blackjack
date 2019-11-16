@@ -28,6 +28,7 @@ namespace Blackjack.Controller
                         break;
                     case View.GameAction.Stay:
                         Game.DealerTakeCards();
+                        Game.SetPlayerHasStayedTrue();
                         break;
                 }
             }
