@@ -169,6 +169,18 @@ namespace BlackjackTest.View
         }
 
         [Theory]
+        [InlineData(Value.Ace, 11, Value.Five, 22)]
+        public void RenderResultOfGame_ShouldRenderBothHandsAndPlayerWinnerIfDealerScorOver21(Value playerCardValue, int playerScore, Value dealerCardValue, int dealerScore)
+        {
+            CollectConsoleOutput();
+            MockHands(playerCardValue, playerScore, dealerCardValue, dealerScore);
+            string expected = "Player: Clubs Ace (11)\r\n\r\nDealer: Clubs Five (22)\r\n\r\nPlayer wins!!\r\n";
+            sut.RenderResultOfGame(mockHands.Object);
+            string actual = output.ToString();
+            Assert.Equal(expected, actual);
+        }
+
+        [Theory]
         [InlineData(Value.Five, 5, Value.Ace, 11)]
         public void RenderResultOfGame_ShouldRenderBothHandsAndDealerWinnerIfScoreEqualOrHigherThanPlayerAndUnder21(Value playerCardValue, int playerScore, Value dealerCardValue, int dealerScore)
         {
