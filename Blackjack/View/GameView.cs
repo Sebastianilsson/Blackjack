@@ -62,7 +62,7 @@ namespace Blackjack.View
             int actionChoice = CheckIfValidMenuChoice(2);
             return (GameAction)actionChoice;
         }
-        public void RenderResultOfGame()
+        public void RenderResultOfGame(Model.IHands hands)
         {
             throw new NotImplementedException();
         }

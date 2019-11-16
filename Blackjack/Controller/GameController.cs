@@ -31,7 +31,7 @@ namespace Blackjack.Controller
                         break;
                 }
             }
-            GameView.RenderResultOfGame();
+            GameView.RenderResultOfGame(Game.GetHands());
         }
     }
 }

@@ -107,8 +107,9 @@ namespace BlackjackTest.Controller
         [Fact]
         public void PlayGame_ShouldCallToRenderTheResultOfTheGame()
         {
+            var mockHands = new Mock<IHands>();
             sut.PlayGame();
-            mockGameView.Verify(view => view.RenderResultOfGame(), Times.Once());
+            mockGameView.Verify(view => view.RenderResultOfGame(mockHands.Object), Times.Once());
         }
     }
 }
