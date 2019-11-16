@@ -165,8 +165,7 @@ namespace BlackjackTest.Model
         public void SetPlayerHasStayedTrue_ShouldMakeIsGameOverReturnTrueNextTimeItIsCalled()
         {
             sut.SetPlayerHasStayedTrue();
-            bool isGameOver = sut.IsGameOver();
-            Assert.True(isGameOver);
+            Assert.True(sut.IsGameOver());
         }
     }
 }
