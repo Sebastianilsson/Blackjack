@@ -42,7 +42,18 @@ namespace Blackjack.View
         }
         public void RenderPlayersHands(Model.IHands hands)
         {
-            throw new NotImplementedException();
+            Console.Write("Player: ");
+            foreach (var card in hands.PlayerCards)
+            {
+                Console.Write(card.GetColor() + " " + card.GetValue() + " ");
+            }
+            Console.WriteLine("(" + hands.PlayerScore + ")\r\n");
+            Console.Write("Dealer: ");
+            foreach (var card in hands.DealerCards)
+            {
+                Console.Write(card.GetColor() + " " + card.GetValue() + " ");
+            }
+            Console.WriteLine("(" + hands.DealerScore + ")\r\n");
         }
         public void RenderGameActionChoices()
         {
