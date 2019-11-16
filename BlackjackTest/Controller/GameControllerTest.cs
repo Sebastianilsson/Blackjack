@@ -30,6 +30,12 @@ namespace BlackjackTest.Controller
                 .Returns(true);
         }
 
+        private void GetGameActionStay()
+        {
+            mockGameView.Setup(view => view.GetGameAction())
+                .Returns(GameAction.Stay);
+        }
+
         [Fact]
         public void PlayGame_ShouldCallToDealANewHand()
         {
@@ -98,8 +104,7 @@ namespace BlackjackTest.Controller
         public void PlayGame_ShouldCallToDealerTakeCardsIfGameActionReturnsStay()
         {
             GoIntoWhileLoopOnce();
-            mockGameView.Setup(view => view.GetGameAction())
-                .Returns(GameAction.Stay);
+            GetGameActionStay();
             sut.PlayGame();
             mockBlackjackGame.Verify(game => game.DealerTakeCards(), Times.Once());
         }
@@ -108,8 +113,7 @@ namespace BlackjackTest.Controller
         public void PlayGame_ShouldCallToToSetGameIsOverIfGameActionReturnsStay()
         {
             GoIntoWhileLoopOnce();
-            mockGameView.Setup(view => view.GetGameAction())
-                .Returns(GameAction.Stay);
+            GetGameActionStay();
             sut.PlayGame();
             mockBlackjackGame.Verify(game => game.SetPlayerHasStayedTrue(), Times.Once());
         }
