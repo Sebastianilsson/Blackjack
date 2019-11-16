@@ -9,22 +9,31 @@ namespace BlackjackTest.Model
 {
     public class PlayerTest
     {
+        private IPlayer sut;
+
+        public PlayerTest()
+        {
+            sut = new Player();
+        }
+
+        private void AddMockCardToHand(Value value)
+        {
+            var mockCard1 = new Mock<ICard>();
+            mockCard1.Setup(card => card.GetValue()).Returns(value);
+            sut.AddCardToHand(mockCard1.Object);
+        }
+
         [Fact]
         public void AddCardToHand_ShouldAddACardToPlayersHand()
         {
-            IPlayer sut = new Player();
-            var mockCard = new Mock<ICard>();
-            sut.AddCardToHand(mockCard.Object);
+            AddMockCardToHand(Value.Ace);
             Assert.NotEmpty(sut.Hand);
         }
 
         [Fact]
         public void GetCurrentScore_ShouldReturnTheScoreOfACardIfOnlyOneCardOnHand()
         {
-            IPlayer sut = new Player();
-            var mockCard = new Mock<ICard>();
-            mockCard.Setup(card => card.GetValue()).Returns(Value.Ace);
-            sut.AddCardToHand(mockCard.Object);
+            AddMockCardToHand(Value.Ace);
             int expected = 11;
             int actual = sut.GetCurrentScore();
             Assert.Equal(expected, actual);
