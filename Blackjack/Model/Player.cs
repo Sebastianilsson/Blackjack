@@ -16,7 +16,7 @@ namespace Blackjack.Model
 
         public void AddCardToHand(ICard card)
         {
-            throw new NotImplementedException();
+            _hand.Add(card);
         }
     }
 }

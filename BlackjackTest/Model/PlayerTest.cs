@@ -13,7 +13,7 @@ namespace BlackjackTest.Model
         public void AddCardToHand_ShouldAddACardToPlayersHand()
         {
             IPlayer sut = new Player();
-            var mockCard = new Mock<ICard>(It.IsAny<Color>(), It.IsAny<Value>());
+            var mockCard = new Mock<ICard>();
             sut.AddCardToHand(mockCard.Object);
             Assert.NotEmpty(sut.Hand);
         }
