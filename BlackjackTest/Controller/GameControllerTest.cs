@@ -105,6 +105,16 @@ namespace BlackjackTest.Controller
         }
 
         [Fact]
+        public void PlayGame_ShouldCallToToSetGameIsOverIfGameActionReturnsStay()
+        {
+            GoIntoWhileLoopOnce();
+            mockGameView.Setup(view => view.GetGameAction())
+                .Returns(GameAction.Stay);
+            sut.PlayGame();
+            mockBlackjackGame.Verify(game => game.SetPlayerHasStayedTrue(), Times.Once());
+        }
+
+        [Fact]
         public void PlayGame_ShouldCallToRenderTheResultOfTheGame()
         {
             sut.PlayGame();
