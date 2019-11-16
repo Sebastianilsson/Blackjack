@@ -10,28 +10,51 @@ namespace BlackjackTest.Model
     public class HandsTest
     {
         private Hands sut;
+        private List<ICard> playerHand = new List<ICard>();
+        private List<ICard> dealerHand = new List<ICard>();
         public HandsTest()
         {
-            List<ICard> playerHand = new List<ICard>();
-            var mockPlayerCard = new Mock<ICard>();
-            playerHand.Add(mockPlayerCard.Object);
-            List<ICard> dealerHand = new List<ICard>();
-            var mockDealerCard = new Mock<ICard>();
-            dealerHand.Add(mockDealerCard.Object);
             sut = new Hands(playerHand, dealerHand);
         }
-        [Fact]
-        public void PlayerCards_ShouldReturnListWithThePlayersCards()
+
+        private void AddMockCardsToPlayerHand(int numberOfMockCards)
         {
-            int expected = 1;
+            for (int i = 0; i < numberOfMockCards; i++)
+            {
+                var mockPlayerCard = new Mock<ICard>();
+                playerHand.Add(mockPlayerCard.Object);
+            }
+        }
+
+        private void AddMockCardsToDealerHand(int numberOfMockCards)
+        {
+            for (int i = 0; i < numberOfMockCards; i++)
+            {
+                var mockDealerCard = new Mock<ICard>();
+                dealerHand.Add(mockDealerCard.Object);
+            }
+        }
+
+        [Theory]
+        [InlineData(0)]
+        [InlineData(1)]
+        [InlineData(2)]
+        public void PlayerCards_ShouldReturnListWithThePlayersCards(int numberOfMockCards)
+        {
+            AddMockCardsToPlayerHand(numberOfMockCards);
+            int expected = numberOfMockCards;
             int actual = sut.PlayerCards.Count;
             Assert.Equal(expected, actual);
         }
 
-        [Fact]
-        public void DealerCards_ShouldReturnListWithTheDealersCards()
+        [Theory]
+        [InlineData(0)]
+        [InlineData(1)]
+        [InlineData(2)]
+        public void DealerCards_ShouldReturnListWithTheDealersCards(int numberOfMockCards)
         {
-            int expected = 1;
+            AddMockCardsToDealerHand(numberOfMockCards);
+            int expected = numberOfMockCards;
             int actual = sut.DealerCards.Count;
             Assert.Equal(expected, actual);
         }
