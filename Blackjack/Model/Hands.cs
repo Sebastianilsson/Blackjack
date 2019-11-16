@@ -6,7 +6,7 @@ namespace Blackjack.Model
 {
     public class Hands : IHands
     {
-        public IReadOnlyList<ICard> PlayerCards { get; }
+        public IReadOnlyList<ICard> PlayerCards { get { return _playerCards; } }
         private IReadOnlyList<ICard> _playerCards;
         public Hands (IReadOnlyList<ICard> playerCards)
         {
