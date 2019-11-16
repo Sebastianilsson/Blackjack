@@ -139,5 +139,12 @@ namespace BlackjackTest.Model
             sut.GetHands();
             mockPlayer.Verify(player => player.GetCurrentScore(), Times.Once());
         }
+
+        [Fact]
+        public void GetHands_ShouldCallToGetDealerScoreOnce()
+        {
+            sut.GetHands();
+            mockDealer.Verify(dealer => dealer.GetCurrentScore(), Times.Once());
+        }
     }
 }
