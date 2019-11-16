@@ -6,5 +6,6 @@ namespace Blackjack.Model
 {
     public interface IHands
     {
+        IReadOnlyList<ICard> PlayerCards {get; }
     }
 }

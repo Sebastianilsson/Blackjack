@@ -41,7 +41,7 @@ namespace Blackjack.Model
 
         public IHands GetHands()
         {
-            return new Hands();
+            return new Hands(Player.Hand);
         }
 
         public void Hit()
