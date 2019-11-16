@@ -42,10 +42,7 @@ namespace Blackjack.View
         }
         public void RenderPlayersHands(Model.IHands hands)
         {
-            Console.Write("Player: ");
-            RenderHand(hands.PlayerCards, hands.PlayerScore);
-            Console.Write("Dealer: ");
-            RenderHand(hands.DealerCards, hands.DealerScore);
+            RenderBothHands(hands);
         }
         public void RenderGameActionChoices()
         {
@@ -64,11 +61,8 @@ namespace Blackjack.View
         }
         public void RenderResultOfGame(Model.IHands hands)
         {
-            Console.Write("Player: ");
-            RenderHand(hands.PlayerCards, hands.PlayerScore);
-            Console.Write("Dealer: ");
-            RenderHand(hands.DealerCards, hands.DealerScore);
-            Console.WriteLine("Player wins!!");
+            RenderBothHands(hands);
+            Console.WriteLine(hands.PlayerScore > hands.DealerScore && hands.PlayerScore < 22 ? "Player wins!!" : "");
         }
 
         private int CheckIfValidMenuChoice(int numberOfChoicesInMenu)
@@ -89,6 +83,14 @@ namespace Blackjack.View
                 Console.Write(card.GetColor() + " " + card.GetValue() + " ");
             }
             Console.WriteLine("(" + score + ")\r\n");
+        }
+
+        private void RenderBothHands(Model.IHands hands)
+        {
+            Console.Write("Player: ");
+            RenderHand(hands.PlayerCards, hands.PlayerScore);
+            Console.Write("Dealer: ");
+            RenderHand(hands.DealerCards, hands.DealerScore);
         }
     }
     public enum StartMenuAction
