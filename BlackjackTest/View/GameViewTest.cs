@@ -11,8 +11,10 @@ namespace BlackjackTest.View
 {
     public class GameViewTest
     {
+        private Mock<IHands> mockHands;
         private IGameView sut;
         private StringWriter output;
+
         public GameViewTest()
         {
             sut = new GameView();
@@ -28,6 +30,20 @@ namespace BlackjackTest.View
         {
             output = new StringWriter();
             Console.SetOut(output);
+        }
+
+        private void MockHands(Value playerCardValue, int playerScore, Value dealerCardValue, int dealerScore)
+        {
+            var mockCard = new Mock<ICard>();
+            mockCard.SetupSequence(card => card.GetColor()).Returns(Color.Clubs).Returns(Color.Clubs);
+            mockCard.SetupSequence(card => card.GetValue()).Returns(playerCardValue).Returns(dealerCardValue);
+            var hand = new List<ICard>();
+            hand.Add(mockCard.Object);
+            mockHands = new Mock<IHands>();
+            mockHands.Setup(hands => hands.PlayerCards).Returns(hand);
+            mockHands.Setup(hands => hands.DealerCards).Returns(hand);
+            mockHands.Setup(hands => hands.PlayerScore).Returns(playerScore);
+            mockHands.Setup(hands => hands.DealerScore).Returns(dealerScore);
         }
 
         [Fact]
@@ -128,61 +144,49 @@ namespace BlackjackTest.View
             Assert.Equal(expected, actual);
         }
 
-        [Fact]
-        public void RenderPlayersHands_ShouldRenderPlayerAndDealersHandsAndCurrentScoreWhenCalled()
+        [Theory]
+        [InlineData(Value.Ace, 11, Value.Ace, 11)]
+        public void RenderPlayersHands_ShouldRenderPlayerAndDealersHandsAndCurrentScoreWhenCalled(Value playerCardValue, int playerScore, Value dealerCardValue, int dealerScore)
         {
             CollectConsoleOutput();
-            var mockCard = new Mock<ICard>();
-            mockCard.Setup(card => card.GetColor()).Returns(Color.Clubs);
-            mockCard.Setup(card => card.GetValue()).Returns(Value.Ace);
-            var hand = new List<ICard>();
-            hand.Add(mockCard.Object);
-            var mockHands = new Mock<IHands>();
-            mockHands.Setup(hands => hands.PlayerCards).Returns(hand);
-            mockHands.Setup(hands => hands.DealerCards).Returns(hand);
-            mockHands.Setup(hands => hands.PlayerScore).Returns(11);
-            mockHands.Setup(hands => hands.DealerScore).Returns(11);
+            MockHands(playerCardValue, playerScore, dealerCardValue, dealerScore);
             string expected = "Player: Clubs Ace (11)\r\n\r\nDealer: Clubs Ace (11)\r\n\r\n";
             sut.RenderPlayersHands(mockHands.Object);
             string actual = output.ToString();
             Assert.Equal(expected, actual);
         }
 
-        [Fact]
-        public void RenderResultOfGame_ShouldRenderBothHandsAndPlayerWinnerIfScoreHigherThanDealerAndUnder21()
+        [Theory]
+        [InlineData(Value.Ace, 11, Value.Five, 5)]
+        public void RenderResultOfGame_ShouldRenderBothHandsAndPlayerWinnerIfScoreHigherThanDealerAndUnder21(Value playerCardValue, int playerScore, Value dealerCardValue, int dealerScore)
         {
             CollectConsoleOutput();
-            var mockCard = new Mock<ICard>();
-            mockCard.SetupSequence(card => card.GetColor()).Returns(Color.Clubs).Returns(Color.Diamonds);
-            mockCard.SetupSequence(card => card.GetValue()).Returns(Value.Ace).Returns(Value.Five);
-            var hand = new List<ICard>();
-            hand.Add(mockCard.Object);
-            var mockHands = new Mock<IHands>();
-            mockHands.Setup(hands => hands.PlayerCards).Returns(hand);
-            mockHands.Setup(hands => hands.DealerCards).Returns(hand);
-            mockHands.Setup(hands => hands.PlayerScore).Returns(11);
-            mockHands.Setup(hands => hands.DealerScore).Returns(5);
-            string expected = "Player: Clubs Ace (11)\r\n\r\nDealer: Diamonds Five (5)\r\n\r\nPlayer wins!!\r\n";
+            MockHands(playerCardValue, playerScore, dealerCardValue, dealerScore);
+            string expected = "Player: Clubs Ace (11)\r\n\r\nDealer: Clubs Five (5)\r\n\r\nPlayer wins!!\r\n";
             sut.RenderResultOfGame(mockHands.Object);
             string actual = output.ToString();
             Assert.Equal(expected, actual);
         }
 
-        [Fact]
-        public void RenderResultOfGame_ShouldRenderBothHandsAndDealerWinnerIfScoreEqualOrHigherThanPlayerAndUnder21()
+        [Theory]
+        [InlineData(Value.Five, 5, Value.Ace, 11)]
+        public void RenderResultOfGame_ShouldRenderBothHandsAndDealerWinnerIfScoreEqualOrHigherThanPlayerAndUnder21(Value playerCardValue, int playerScore, Value dealerCardValue, int dealerScore)
         {
             CollectConsoleOutput();
-            var mockCard = new Mock<ICard>();
-            mockCard.SetupSequence(card => card.GetColor()).Returns(Color.Clubs).Returns(Color.Diamonds);
-            mockCard.SetupSequence(card => card.GetValue()).Returns(Value.Five).Returns(Value.Ace);
-            var hand = new List<ICard>();
-            hand.Add(mockCard.Object);
-            var mockHands = new Mock<IHands>();
-            mockHands.Setup(hands => hands.PlayerCards).Returns(hand);
-            mockHands.Setup(hands => hands.DealerCards).Returns(hand);
-            mockHands.Setup(hands => hands.PlayerScore).Returns(5);
-            mockHands.Setup(hands => hands.DealerScore).Returns(11);
-            string expected = "Player: Clubs Five (5)\r\n\r\nDealer: Diamonds Ace (11)\r\n\r\nDealer wins!!\r\n";
+            MockHands(playerCardValue, playerScore, dealerCardValue, dealerScore);
+            string expected = "Player: Clubs Five (5)\r\n\r\nDealer: Clubs Ace (11)\r\n\r\nDealer wins!!\r\n";
+            sut.RenderResultOfGame(mockHands.Object);
+            string actual = output.ToString();
+            Assert.Equal(expected, actual);
+        }
+
+        [Theory]
+        [InlineData(Value.Five, 22, Value.Ace, 11)]
+        public void RenderResultOfGame_ShouldRenderBustedAfterPlayerIfPlayerScoreOver21(Value playerCardValue, int playerScore, Value dealerCardValue, int dealerScore)
+        {
+            CollectConsoleOutput();
+            MockHands(playerCardValue, playerScore, dealerCardValue, dealerScore);
+            string expected = "Player: Clubs Five (22) BUSTED!\r\n\r\nDealer: Clubs Ace (11)\r\n\r\nDealer wins!!\r\n";
             sut.RenderResultOfGame(mockHands.Object);
             string actual = output.ToString();
             Assert.Equal(expected, actual);
