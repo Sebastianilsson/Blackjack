@@ -1,17 +1,5 @@
 {
   "Blackjack.dll": {
-    "C:\\Users\\nilss\\2DV610\\Blackjack\\Blackjack\\Program.cs": {
-      "Blackjack.Program": {
-        "System.Void Blackjack.Program::Main(System.String[])": {
-          "Lines": {
-            "10": 0,
-            "11": 0,
-            "12": 0
-          },
-          "Branches": []
-        }
-      }
-    },
     "C:\\Users\\nilss\\2DV610\\Blackjack\\Blackjack\\View\\GameView.cs": {
       "Blackjack.View.GameView": {
         "System.Void Blackjack.View.GameView::RenderStartMenu()": {
@@ -78,7 +66,7 @@
           },
           "Branches": []
         },
-        "System.Void Blackjack.View.GameView::RenderPlayersHands()": {
+        "System.Void Blackjack.View.GameView::RenderPlayersHands(Blackjack.Model.IHands)": {
           "Lines": {
             "44": 0,
             "45": 0
@@ -208,13 +196,13 @@
       "Blackjack.Model.BlackjackGame": {
         "Blackjack.Model.IDealer Blackjack.Model.BlackjackGame::get_Dealer()": {
           "Lines": {
-            "9": 50
+            "9": 62
           },
           "Branches": []
         },
         "Blackjack.Model.IPlayer Blackjack.Model.BlackjackGame::get_Player()": {
           "Lines": {
-            "10": 26
+            "10": 38
           },
           "Branches": []
         },
@@ -259,26 +247,38 @@
             }
           ]
         },
+        "Blackjack.Model.IHands Blackjack.Model.BlackjackGame::GetHands()": {
+          "Lines": {
+            "43": 4,
+            "44": 4,
+            "45": 4,
+            "46": 4,
+            "47": 4,
+            "49": 4,
+            "50": 4
+          },
+          "Branches": []
+        },
         "System.Void Blackjack.Model.BlackjackGame::Hit()": {
           "Lines": {
-            "43": 1,
-            "44": 1,
-            "45": 1
+            "53": 1,
+            "54": 1,
+            "55": 1
           },
           "Branches": []
         },
         "System.Void Blackjack.Model.BlackjackGame::DealerTakeCards()": {
           "Lines": {
-            "48": 4,
-            "49": 8,
-            "50": 4,
-            "51": 4,
-            "52": 4,
-            "53": 4
+            "58": 4,
+            "59": 8,
+            "60": 4,
+            "61": 4,
+            "62": 4,
+            "63": 4
           },
           "Branches": [
             {
-              "Line": 49,
+              "Line": 59,
               "Offset": 34,
               "EndOffset": 3,
               "Path": 1,
@@ -286,7 +286,7 @@
               "Hits": 4
             },
             {
-              "Line": 49,
+              "Line": 59,
               "Offset": 34,
               "EndOffset": 36,
               "Path": 0,
@@ -297,14 +297,14 @@
         },
         "System.Void Blackjack.Model.BlackjackGame::.ctor(Blackjack.Model.IDealer,Blackjack.Model.IPlayer)": {
           "Lines": {
-            "12": 13,
-            "13": 13,
-            "14": 13,
-            "16": 13,
-            "17": 13,
-            "18": 13,
-            "19": 13,
-            "20": 13
+            "12": 17,
+            "13": 17,
+            "14": 17,
+            "16": 17,
+            "17": 17,
+            "18": 17,
+            "19": 17,
+            "20": 17
           },
           "Branches": []
         }
@@ -664,6 +664,46 @@
         }
       }
     },
+    "C:\\Users\\nilss\\2DV610\\Blackjack\\Blackjack\\Model\\Hands.cs": {
+      "Blackjack.Model.Hands": {
+        "System.Collections.Generic.IReadOnlyList`1<Blackjack.Model.ICard> Blackjack.Model.Hands::get_PlayerCards()": {
+          "Lines": {
+            "9": 9
+          },
+          "Branches": []
+        },
+        "System.Int32 Blackjack.Model.Hands::get_PlayerScore()": {
+          "Lines": {
+            "10": 3
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.IReadOnlyList`1<Blackjack.Model.ICard> Blackjack.Model.Hands::get_DealerCards()": {
+          "Lines": {
+            "11": 9
+          },
+          "Branches": []
+        },
+        "System.Int32 Blackjack.Model.Hands::get_DealerScore()": {
+          "Lines": {
+            "12": 3
+          },
+          "Branches": []
+        },
+        "System.Void Blackjack.Model.Hands::.ctor(System.Collections.Generic.IReadOnlyList`1<Blackjack.Model.ICard>,System.Int32,System.Collections.Generic.IReadOnlyList`1<Blackjack.Model.ICard>,System.Int32)": {
+          "Lines": {
+            "17": 12,
+            "18": 12,
+            "19": 12,
+            "20": 12,
+            "21": 12,
+            "22": 12,
+            "23": 12
+          },
+          "Branches": []
+        }
+      }
+    },
     "C:\\Users\\nilss\\2DV610\\Blackjack\\Blackjack\\Model\\Player.cs": {
       "Blackjack.Model.Player": {
         "System.Collections.Generic.IReadOnlyList`1<Blackjack.Model.ICard> Blackjack.Model.Player::get_Hand()": {
@@ -798,91 +838,92 @@
       "Blackjack.Controller.GameController": {
         "Blackjack.Model.IBlackjackGame Blackjack.Controller.GameController::get_Game()": {
           "Lines": {
-            "9": 35
+            "9": 46
           },
           "Branches": []
         },
         "Blackjack.View.IGameView Blackjack.Controller.GameController::get_GameView()": {
           "Lines": {
-            "10": 36
+            "10": 41
           },
           "Branches": []
         },
         "System.Void Blackjack.Controller.GameController::PlayGame()": {
           "Lines": {
-            "17": 9,
-            "18": 9,
-            "19": 15,
-            "20": 6,
-            "21": 6,
-            "22": 6,
-            "23": 6,
-            "26": 1,
+            "17": 10,
+            "18": 10,
+            "19": 17,
+            "20": 7,
+            "21": 7,
+            "22": 7,
+            "23": 7,
+            "24": 7,
             "27": 1,
-            "29": 1,
+            "28": 1,
             "30": 1,
-            "32": 6,
-            "33": 9,
-            "34": 9
+            "31": 1,
+            "33": 7,
+            "34": 10,
+            "35": 10
           },
           "Branches": [
             {
               "Line": 19,
-              "Offset": 111,
+              "Offset": 124,
               "EndOffset": 15,
               "Path": 1,
               "Ordinal": 5,
+              "Hits": 7
+            },
+            {
+              "Line": 24,
+              "Offset": 69,
+              "EndOffset": 73,
+              "Path": 0,
+              "Ordinal": 0,
               "Hits": 6
             },
             {
-              "Line": 23,
-              "Offset": 56,
-              "EndOffset": 60,
-              "Path": 0,
-              "Ordinal": 0,
-              "Hits": 5
-            },
-            {
-              "Line": 23,
-              "Offset": 56,
-              "EndOffset": 66,
+              "Line": 24,
+              "Offset": 69,
+              "EndOffset": 79,
               "Path": 1,
               "Ordinal": 1,
               "Hits": 1
             },
             {
-              "Line": 23,
-              "Offset": 62,
-              "EndOffset": 80,
+              "Line": 24,
+              "Offset": 75,
+              "EndOffset": 93,
               "Path": 1,
               "Ordinal": 3,
               "Hits": 1
             },
             {
-              "Line": 23,
-              "Offset": 62,
-              "EndOffset": 94,
+              "Line": 24,
+              "Offset": 75,
+              "EndOffset": 107,
               "Path": 0,
               "Ordinal": 2,
-              "Hits": 6
+              "Hits": 7
             },
             {
               "Line": 19,
-              "Offset": 111,
-              "EndOffset": 113,
+              "Offset": 124,
+              "EndOffset": 126,
               "Path": 0,
               "Ordinal": 4,
-              "Hits": 9
+              "Hits": 10
             }
           ]
         },
         "System.Void Blackjack.Controller.GameController::.ctor(Blackjack.Model.IBlackjackGame,Blackjack.View.IGameView)": {
           "Lines": {
-            "11": 9,
-            "12": 9,
-            "13": 9,
-            "14": 9,
-            "15": 9
+            "11": 10,
+            "12": 10,
+            "13": 10,
+            "14": 10,
+            "15": 10
           },
           "Branches": []
         }
