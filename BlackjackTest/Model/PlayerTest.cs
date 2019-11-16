@@ -44,5 +44,16 @@ namespace BlackjackTest.Model
             int actual = sut.GetCurrentScore();
             Assert.Equal(expected, actual);
         }
+
+        [Fact]
+        public void GetCurrentScore_ShouldReturnScoreMinusTenIfOverTwentyOneAndAAceOnHand()
+        {
+            AddMockCardToHand(Value.Nine);
+            AddMockCardToHand(Value.Nine);
+            AddMockCardToHand(Value.Ace);
+            int expected = 19;
+            int actual = sut.GetCurrentScore();
+            Assert.Equal(expected, actual);
+        }
     }
 }
