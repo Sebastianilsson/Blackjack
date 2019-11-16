@@ -42,6 +42,7 @@ namespace Blackjack.Model
         public IHands GetHands()
         {
             IReadOnlyList<ICard> playerHand = Player.Hand;
+            IReadOnlyList<ICard> dealerHand = Dealer.Hand;
             int playerScore = Player.GetCurrentScore();
             int dealerScore = Dealer.GetCurrentScore();
 
