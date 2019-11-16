@@ -167,5 +167,25 @@ namespace BlackjackTest.View
             string actual = output.ToString();
             Assert.Equal(expected, actual);
         }
+
+        [Fact]
+        public void RenderResultOfGame_ShouldRenderBothHandsAndDealerWinnerIfScoreEqualOrHigherThanPlayerAndUnder21()
+        {
+            CollectConsoleOutput();
+            var mockCard = new Mock<ICard>();
+            mockCard.SetupSequence(card => card.GetColor()).Returns(Color.Clubs).Returns(Color.Diamonds);
+            mockCard.SetupSequence(card => card.GetValue()).Returns(Value.Five).Returns(Value.Ace);
+            var hand = new List<ICard>();
+            hand.Add(mockCard.Object);
+            var mockHands = new Mock<IHands>();
+            mockHands.Setup(hands => hands.PlayerCards).Returns(hand);
+            mockHands.Setup(hands => hands.DealerCards).Returns(hand);
+            mockHands.Setup(hands => hands.PlayerScore).Returns(5);
+            mockHands.Setup(hands => hands.DealerScore).Returns(11);
+            string expected = "Player: Clubs Five (5)\r\n\r\nDealer: Diamonds Ace (11)\r\n\r\nDealer wins!!\r\n";
+            sut.RenderResultOfGame(mockHands.Object);
+            string actual = output.ToString();
+            Assert.Equal(expected, actual);
+        }
     }
 }
