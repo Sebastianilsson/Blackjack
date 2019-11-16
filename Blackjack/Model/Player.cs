@@ -6,7 +6,7 @@ namespace Blackjack.Model
 {
     public class Player : IPlayer
     {
-        public IReadOnlyList<ICard> Hand { get { return _hand; } }
+        public IReadOnlyList<ICard> Hand { get { return _hand.AsReadOnly(); } }
         private List<ICard> _hand = new List<ICard>();
 
         public int GetCurrentScore()
