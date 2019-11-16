@@ -32,7 +32,7 @@ namespace Blackjack.Model
 
         public bool IsGameOver()
         {
-            if (Player.GetCurrentScore() >= blackjackScore)
+            if (Player.GetCurrentScore() >= blackjackScore || playerHasStayed)
             {
                 return gameIsOver;
             }
@@ -65,7 +65,7 @@ namespace Blackjack.Model
 
         public void SetPlayerHasStayedTrue()
         {
-            throw new NotImplementedException();
+            playerHasStayed = true;
         }
     }
 }
