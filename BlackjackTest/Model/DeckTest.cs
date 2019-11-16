@@ -21,6 +21,16 @@ namespace BlackjackTest.Model
             sut = new Deck(mockCardFactory.Object, mockRandom.Object);
         }
 
+        private void MockRandomValues()
+        {
+            mockRandom.SetupSequence(random => random.Next(It.IsInRange<int>(0, 52, Moq.Range.Inclusive)))
+                .Returns(4)
+                .Returns(1)
+                .Returns(50)
+                .Returns(48)
+                .Returns(11);
+        }
+
         private void CreateDeckWithMockedCards()
         {
             SetupToGetMockedCards();
@@ -148,6 +158,7 @@ namespace BlackjackTest.Model
             Deck compareDeck = new Deck(mockCardFactory.Object, mockRandom.Object);
             SetupToGetMockedCards();
             compareDeck.CreateCardsForDeck();
+            MockRandomValues();
             sut.Shuffle();
             bool sameOrder = Enumerable.SequenceEqual(sut.GetCards(), compareDeck.GetCards(), 
                 new DeckComparer());
@@ -158,8 +169,10 @@ namespace BlackjackTest.Model
         public void Shuffle_ShouldCallRandomNumberToShuffleTheDeck()
         {
             CreateDeckWithMockedCards();
+            MockRandomValues();
             sut.Shuffle();
-            mockRandom.Verify(random => random.Next(It.IsAny<int>()), Times.AtLeast(1));
+            mockRandom.Verify(random => random.Next(It.IsInRange<int>(0, 52, Moq.Range.Inclusive)), 
+                Times.Exactly(51));
         }
 
     }

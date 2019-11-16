@@ -37,9 +37,9 @@ namespace Blackjack.Model
             {
                 cardIndex--;
                 int changeIndex = Random.Next(cardIndex + 1);
-                ICard card = Cards[0];
-                Cards[0] = Cards[13];
-                Cards[13] = card;
+                ICard card = Cards[changeIndex];
+                Cards[changeIndex] = Cards[cardIndex];
+                Cards[cardIndex] = card;
             }
         }
 
