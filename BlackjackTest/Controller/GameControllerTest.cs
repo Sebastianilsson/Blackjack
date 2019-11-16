@@ -53,6 +53,14 @@ namespace BlackjackTest.Controller
         }
 
         [Fact]
+        public void PlayGame_ShouldCallToGetPlayersHands()
+        {
+            GoIntoWhileLoopOnce();
+            sut.PlayGame();
+            mockBlackjackGame.Verify(game => game.GetHands(), Times.Once());
+        }
+
+        [Fact]
         public void PlayGame_ShouldCallToRenderPlayersHands()
         {
             GoIntoWhileLoopOnce();  

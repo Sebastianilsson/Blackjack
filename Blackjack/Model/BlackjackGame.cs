@@ -39,6 +39,11 @@ namespace Blackjack.Model
             return gameIsNotOver;
         }
 
+        public IHands GetHands()
+        {
+            throw new NotImplementedException();
+        }
+
         public void Hit()
         {
             Dealer.DealCard(Player);
