@@ -14,7 +14,8 @@ namespace BlackjackTest.Model
         private List<ICard> dealerHand = new List<ICard>();
         public HandsTest()
         {
-            sut = new Hands(playerHand, dealerHand);
+            int playerScore = 5;
+            sut = new Hands(playerHand, playerScore, dealerHand);
         }
 
         private void AddMockCardsToPlayerHand(int numberOfMockCards)
@@ -56,6 +57,14 @@ namespace BlackjackTest.Model
             AddMockCardsToDealerHand(numberOfMockCards);
             int expected = numberOfMockCards;
             int actual = sut.DealerCards.Count;
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void PlayerScore_ShouldReturnAnIntRepresentingTheScoreOfThePlayer()
+        {
+            int expected = 5;
+            int actual = sut.PlayerScore;
             Assert.Equal(expected, actual);
         }
     }
