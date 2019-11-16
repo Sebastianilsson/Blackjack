@@ -8,7 +8,7 @@ namespace Blackjack.Model
     {
         public IHands CreateNewHands(IReadOnlyList<ICard> playerCards, int playerScore, IReadOnlyList<ICard> dealerCards, int dealerScore)
         {
-            throw new NotImplementedException();
+            return new Hands(playerCards, playerScore, dealerCards, dealerScore);
         }
     }
 }
