@@ -4,6 +4,7 @@ using System.Text;
 using Xunit;
 using Moq;
 using Blackjack.View;
+using Blackjack.Model;
 using System.IO;
 
 namespace BlackjackTest.View
@@ -124,6 +125,26 @@ namespace BlackjackTest.View
             int.TryParse(userInput, out menuChoice);
             GameAction expected = (GameAction)menuChoice;
             GameAction actual = sut.GetGameAction();
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void RenderPlayersHands_ShouldRenderPlayerAndDealersHandsAndCurrentScoreWhenCalled()
+        {
+            CollectConsoleOutput();
+            var mockCard = new Mock<ICard>();
+            mockCard.Setup(card => card.GetColor()).Returns(Color.Clubs);
+            mockCard.Setup(card => card.GetValue()).Returns(Value.Ace);
+            var hand = new List<ICard>();
+            hand.Add(mockCard.Object);
+            var mockHands = new Mock<IHands>();
+            mockHands.Setup(hands => hands.PlayerCards).Returns(hand);
+            mockHands.Setup(hands => hands.DealerCards).Returns(hand);
+            mockHands.Setup(hands => hands.PlayerScore).Returns(11);
+            mockHands.Setup(hands => hands.DealerScore).Returns(11);
+            string expected = "Player: Clubs Ace (11)\r\n\r\nDealer: Clubs Ace (11)\r\n\r\n";
+            sut.RenderPlayersHands(mockHands.Object);
+            string actual = output.ToString();
             Assert.Equal(expected, actual);
         }
     }
