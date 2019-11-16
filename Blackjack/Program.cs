@@ -3,7 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace Blackjack
 {
-    //[ExcludeFromCodeCoverage]
+    [ExcludeFromCodeCoverage]
     class Program
     {
         static void Main(string[] args)

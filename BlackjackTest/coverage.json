@@ -1,17 +1,5 @@
 {
   "Blackjack.dll": {
-    "C:\\Users\\nilss\\2DV610\\Blackjack\\Blackjack\\Program.cs": {
-      "Blackjack.Program": {
-        "System.Void Blackjack.Program::Main(System.String[])": {
-          "Lines": {
-            "10": 0,
-            "11": 0,
-            "12": 0
-          },
-          "Branches": []
-        }
-      }
-    },
     "C:\\Users\\nilss\\2DV610\\Blackjack\\Blackjack\\View\\GameView.cs": {
       "Blackjack.View.GameView": {
         "System.Void Blackjack.View.GameView::RenderStartMenu()": {
@@ -314,39 +302,39 @@
       "Blackjack.Model.Card": {
         "Blackjack.Model.Color Blackjack.Model.Card::get_Color()": {
           "Lines": {
-            "9": 4
+            "9": 472
           },
           "Branches": []
         },
         "Blackjack.Model.Value Blackjack.Model.Card::get_Value()": {
           "Lines": {
-            "10": 4
+            "10": 392
           },
           "Branches": []
         },
         "Blackjack.Model.Color Blackjack.Model.Card::GetColor()": {
           "Lines": {
-            "18": 1,
-            "19": 1,
-            "20": 1
+            "18": 105,
+            "19": 105,
+            "20": 105
           },
           "Branches": []
         },
         "Blackjack.Model.Value Blackjack.Model.Card::GetValue()": {
           "Lines": {
-            "23": 1,
-            "24": 1,
-            "25": 1
+            "23": 25,
+            "24": 25,
+            "25": 25
           },
           "Branches": []
         },
         "System.Void Blackjack.Model.Card::.ctor(Blackjack.Model.Color,Blackjack.Model.Value)": {
           "Lines": {
-            "11": 3,
-            "12": 3,
-            "13": 3,
-            "14": 3,
-            "15": 3
+            "11": 367,
+            "12": 367,
+            "13": 367,
+            "14": 367,
+            "15": 367
           },
           "Branches": []
         }
@@ -354,7 +342,7 @@
     },
     "C:\\Users\\nilss\\2DV610\\Blackjack\\Blackjack\\Model\\CardFactory.cs": {
       "Blackjack.Model.CardFactory": {
-        "Blackjack.Model.Card Blackjack.Model.CardFactory::CreateNewCard(Blackjack.Model.Color,Blackjack.Model.Value)": {
+        "Blackjack.Model.ICard Blackjack.Model.CardFactory::CreateNewCard(Blackjack.Model.Color,Blackjack.Model.Value)": {
           "Lines": {
             "10": 1,
             "11": 1,
@@ -533,6 +521,132 @@
             "14": 14,
             "15": 14,
             "16": 14
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\nilss\\2DV610\\Blackjack\\Blackjack\\Model\\Deck.cs": {
+      "Blackjack.Model.Deck": {
+        "System.Random Blackjack.Model.Deck::get_Random()": {
+          "Lines": {
+            "11": 111
+          },
+          "Branches": []
+        },
+        "Blackjack.Model.ICardFactory Blackjack.Model.Deck::get_CardFactory()": {
+          "Lines": {
+            "12": 477
+          },
+          "Branches": []
+        },
+        "System.Void Blackjack.Model.Deck::CreateCardsForDeck()": {
+          "Lines": {
+            "21": 9,
+            "22": 9,
+            "23": 90,
+            "24": 36,
+            "25": 1008,
+            "26": 468,
+            "27": 468,
+            "28": 468,
+            "29": 468,
+            "30": 36,
+            "31": 9
+          },
+          "Branches": [
+            {
+              "Line": 23,
+              "Offset": 76,
+              "EndOffset": 16,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 36
+            },
+            {
+              "Line": 25,
+              "Offset": 61,
+              "EndOffset": 21,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 468
+            },
+            {
+              "Line": 25,
+              "Offset": 61,
+              "EndOffset": 63,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 36
+            },
+            {
+              "Line": 23,
+              "Offset": 76,
+              "EndOffset": 78,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 9
+            }
+          ]
+        },
+        "System.Void Blackjack.Model.Deck::Shuffle()": {
+          "Lines": {
+            "34": 2,
+            "35": 2,
+            "36": 104,
+            "37": 102,
+            "38": 102,
+            "39": 102,
+            "40": 102,
+            "41": 102,
+            "42": 102,
+            "43": 102,
+            "44": 2
+          },
+          "Branches": [
+            {
+              "Line": 36,
+              "Offset": 94,
+              "EndOffset": 15,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 102
+            },
+            {
+              "Line": 36,
+              "Offset": 94,
+              "EndOffset": 96,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 2
+            }
+          ]
+        },
+        "Blackjack.Model.ICard Blackjack.Model.Deck::GetACard()": {
+          "Lines": {
+            "47": 3,
+            "48": 3,
+            "49": 3,
+            "50": 3,
+            "51": 3
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.IReadOnlyList`1<Blackjack.Model.ICard> Blackjack.Model.Deck::GetCards()": {
+          "Lines": {
+            "54": 6,
+            "55": 6,
+            "56": 6
+          },
+          "Branches": []
+        },
+        "System.Void Blackjack.Model.Deck::.ctor(Blackjack.Model.ICardFactory,System.Random)": {
+          "Lines": {
+            "14": 9,
+            "15": 9,
+            "16": 9,
+            "17": 9,
+            "18": 9
           },
           "Branches": []
         }
