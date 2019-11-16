@@ -40,7 +40,7 @@ namespace Blackjack.View
         {
             Console.Write(exitMessage);
         }
-        public void RenderPlayersHands()
+        public void RenderPlayersHands(Model.IHands hands)
         {
             throw new NotImplementedException();
         }

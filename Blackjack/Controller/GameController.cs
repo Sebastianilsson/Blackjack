@@ -18,7 +18,8 @@ namespace Blackjack.Controller
             Game.DealNewHand();
             while (Game.IsGameOver() == false)
             {
-                GameView.RenderPlayersHands();
+                Model.IHands hands = Game.GetHands();
+                GameView.RenderPlayersHands(hands);
                 GameView.RenderGameActionChoices();
                 switch (GameView.GetGameAction())
                 {

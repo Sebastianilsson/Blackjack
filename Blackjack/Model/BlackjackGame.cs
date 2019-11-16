@@ -41,7 +41,7 @@ namespace Blackjack.Model
 
         public IHands GetHands()
         {
-            throw new NotImplementedException();
+            return new Hands();
         }
 
         public void Hit()
