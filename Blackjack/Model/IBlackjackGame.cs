@@ -11,5 +11,6 @@ namespace Blackjack.Model
         IHands GetHands();
         void Hit();
         void DealerTakeCards();
+        void SetPlayerHasStayedTrue();
     }
 }

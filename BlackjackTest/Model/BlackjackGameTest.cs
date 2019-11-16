@@ -160,5 +160,13 @@ namespace BlackjackTest.Model
             sut.GetHands();
             mockDealer.Verify(dealer => dealer.Hand, Times.Once());
         }
+
+        [Fact]
+        public void SetPlayerHasStayedTrue_ShouldMakeIsGameOverReturnTrueNextTimeItIsCalled()
+        {
+            sut.SetPlayerHasStayedTrue();
+            bool isGameOver = sut.IsGameOver();
+            Assert.True(isGameOver);
+        }
     }
 }

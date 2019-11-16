@@ -12,6 +12,7 @@ namespace Blackjack.Model
         internal int blackjackScore = 21;
         internal bool gameIsOver = true;
         internal bool gameIsNotOver = false;
+        internal bool playerHasStayed = false;
 
         public BlackjackGame(IDealer dealer, IPlayer player)
         {
@@ -60,6 +61,11 @@ namespace Blackjack.Model
             {
                 Dealer.TakeCard();
             }
+        }
+
+        public void SetPlayerHasStayedTrue()
+        {
+            throw new NotImplementedException();
         }
     }
 }
