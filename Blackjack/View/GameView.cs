@@ -43,17 +43,9 @@ namespace Blackjack.View
         public void RenderPlayersHands(Model.IHands hands)
         {
             Console.Write("Player: ");
-            foreach (var card in hands.PlayerCards)
-            {
-                Console.Write(card.GetColor() + " " + card.GetValue() + " ");
-            }
-            Console.WriteLine("(" + hands.PlayerScore + ")\r\n");
+            RenderHand(hands.PlayerCards, hands.PlayerScore);
             Console.Write("Dealer: ");
-            foreach (var card in hands.DealerCards)
-            {
-                Console.Write(card.GetColor() + " " + card.GetValue() + " ");
-            }
-            Console.WriteLine("(" + hands.DealerScore + ")\r\n");
+            RenderHand(hands.DealerCards, hands.DealerScore);
         }
         public void RenderGameActionChoices()
         {
@@ -84,6 +76,15 @@ namespace Blackjack.View
                 throw new Exception();
             }
             return input;
+        }
+
+        private void RenderHand(IReadOnlyList<Model.ICard> cards, int score )
+        {
+            foreach (var card in cards)
+            {
+                Console.Write(card.GetColor() + " " + card.GetValue() + " ");
+            }
+            Console.WriteLine("(" + score + ")\r\n");
         }
     }
     public enum StartMenuAction
