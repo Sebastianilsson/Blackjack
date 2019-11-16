@@ -30,21 +30,17 @@ namespace BlackjackTest.Model
             Assert.NotEmpty(sut.Hand);
         }
 
-        [Fact]
-        public void GetCurrentScore_ShouldReturnTheScoreOfACardIfOnlyOneCardOnHand()
+        [Theory]
+        [InlineData(11, Value.Ace)]
+        [InlineData(13, Value.Ace, Value.Two)]
+        [InlineData(20, Value.Ace, Value.Five, Value.Two, Value.Two)]
+        [InlineData(0)]
+        public void GetCurrentScore_ShouldReturnTheCombinedScoreOfAllCardsOnHand(int expected, params Value[] cardValues)
         {
-            AddMockCardToHand(Value.Ace);
-            int expected = 11;
-            int actual = sut.GetCurrentScore();
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
-        public void GetCurrentScore_ShouldReturnTheCombindeScoreIfTwoCardsOnHand()
-        {
-            AddMockCardToHand(Value.Ace);
-            AddMockCardToHand(Value.Two);
-            int expected = 13;
+            foreach (Value cardValue in cardValues)
+            {
+                AddMockCardToHand(cardValue);
+            }
             int actual = sut.GetCurrentScore();
             Assert.Equal(expected, actual);
         }
