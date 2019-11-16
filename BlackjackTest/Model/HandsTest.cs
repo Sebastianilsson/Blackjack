@@ -9,13 +9,17 @@ namespace BlackjackTest.Model
 {
     public class HandsTest
     {
-        [Fact]
-        public void PlayerCards_ShouldReturnListWithThePlayersCards()
+        private Hands sut;
+        public HandsTest()
         {
             List<ICard> playerHand = new List<ICard>();
             var mockCard = new Mock<ICard>();
             playerHand.Add(mockCard.Object);
-            Hands sut = new Hands(playerHand);
+            sut = new Hands(playerHand);
+        }
+        [Fact]
+        public void PlayerCards_ShouldReturnListWithThePlayersCards()
+        {
             int expected = 1;
             int actual = sut.PlayerCards.Count;
             Assert.Equal(expected, actual);
