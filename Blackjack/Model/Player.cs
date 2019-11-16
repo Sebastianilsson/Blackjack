@@ -18,6 +18,7 @@ namespace Blackjack.Model
             {
                 score += cardValues[(int)card.GetValue()];
             }
+            if (score > 21) score -= 10;
             return score;
         }
 
