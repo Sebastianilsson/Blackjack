@@ -82,7 +82,8 @@ namespace Blackjack.View
             {
                 Console.Write(card.GetColor() + " " + card.GetValue() + " ");
             }
-            Console.WriteLine("(" + score + ")\r\n");
+            Console.Write("(" + score + ")");
+            Console.WriteLine(score > 21 ? " BUSTED!\r\n" : "\r\n");
         }
 
         private void RenderBothHands(Model.IHands hands)
