@@ -43,6 +43,7 @@ namespace Blackjack.Model
         {
             int playerScore = Player.GetCurrentScore();
             int dealerScore = Dealer.GetCurrentScore();
+
             return new Hands(Player.Hand, playerScore, Dealer.Hand, dealerScore);
         }
 
