@@ -162,7 +162,7 @@ namespace BlackjackTest.View
             mockHands.Setup(hands => hands.DealerCards).Returns(hand);
             mockHands.Setup(hands => hands.PlayerScore).Returns(11);
             mockHands.Setup(hands => hands.DealerScore).Returns(5);
-            string expected = "Player: Clubs Ace (11)\r\n\r\nDealer: Clubs Ace (11)\r\n\r\nPlayer wins!!\r\n";
+            string expected = "Player: Clubs Ace (11)\r\n\r\nDealer: Diamonds Five (5)\r\n\r\nPlayer wins!!\r\n";
             sut.RenderResultOfGame(mockHands.Object);
             string actual = output.ToString();
             Assert.Equal(expected, actual);

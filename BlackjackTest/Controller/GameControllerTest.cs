@@ -57,7 +57,7 @@ namespace BlackjackTest.Controller
         {
             GoIntoWhileLoopOnce();
             sut.PlayGame();
-            mockBlackjackGame.Verify(game => game.GetHands(), Times.Once());
+            mockBlackjackGame.Verify(game => game.GetHands(), Times.Exactly(2));
         }
 
         [Fact]
@@ -107,9 +107,8 @@ namespace BlackjackTest.Controller
         [Fact]
         public void PlayGame_ShouldCallToRenderTheResultOfTheGame()
         {
-            var mockHands = new Mock<IHands>();
             sut.PlayGame();
-            mockGameView.Verify(view => view.RenderResultOfGame(mockHands.Object), Times.Once());
+            mockGameView.Verify(view => view.RenderResultOfGame(It.IsAny<IHands>()), Times.Once());
         }
     }
 }

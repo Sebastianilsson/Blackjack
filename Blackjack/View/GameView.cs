@@ -64,7 +64,11 @@ namespace Blackjack.View
         }
         public void RenderResultOfGame(Model.IHands hands)
         {
-            throw new NotImplementedException();
+            Console.Write("Player: ");
+            RenderHand(hands.PlayerCards, hands.PlayerScore);
+            Console.Write("Dealer: ");
+            RenderHand(hands.DealerCards, hands.DealerScore);
+            Console.WriteLine("Player wins!!");
         }
 
         private int CheckIfValidMenuChoice(int numberOfChoicesInMenu)
