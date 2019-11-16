@@ -9,7 +9,7 @@ namespace Blackjack.Model
         public IReadOnlyList<ICard> PlayerCards { get { return _playerCards; } }
         public int PlayerScore { get { return _playerScore; } }
         public IReadOnlyList<ICard> DealerCards { get { return _dealerCards; } }
-        public int DealerScore { get; }
+        public int DealerScore { get { return _dealerScore; } }
         private IReadOnlyList<ICard> _playerCards;
         private int _playerScore;
         private IReadOnlyList<ICard> _dealerCards;
