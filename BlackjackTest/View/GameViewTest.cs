@@ -191,5 +191,17 @@ namespace BlackjackTest.View
             string actual = output.ToString();
             Assert.Equal(expected, actual);
         }
+
+        [Theory]
+        [InlineData(Value.Five, 11, Value.Ace, 22)]
+        public void RenderResultOfGame_ShouldRenderBustedAfterDealerIfDealerScoreOver21(Value playerCardValue, int playerScore, Value dealerCardValue, int dealerScore)
+        {
+            CollectConsoleOutput();
+            MockHands(playerCardValue, playerScore, dealerCardValue, dealerScore);
+            string expected = "Player: Clubs Five (11)\r\n\r\nDealer: Clubs Ace (22) BUSTED!\r\n\r\nDealer wins!!\r\n";
+            sut.RenderResultOfGame(mockHands.Object);
+            string actual = output.ToString();
+            Assert.Equal(expected, actual);
+        }
     }
 }
