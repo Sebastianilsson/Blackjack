@@ -62,7 +62,7 @@ namespace Blackjack.View
         public void RenderResultOfGame(Model.IHands hands)
         {
             RenderBothHands(hands);
-            Console.WriteLine(hands.PlayerScore > hands.DealerScore && hands.PlayerScore < 22 ? "Player wins!!" : "Dealer wins!!");
+            Console.WriteLine((hands.PlayerScore > hands.DealerScore && hands.PlayerScore < 22) || hands.DealerScore > 21 ? "Player wins!!" : "Dealer wins!!");
         }
 
         private int CheckIfValidMenuChoice(int numberOfChoicesInMenu)

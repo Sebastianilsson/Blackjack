@@ -174,7 +174,7 @@ namespace BlackjackTest.View
         {
             CollectConsoleOutput();
             MockHands(playerCardValue, playerScore, dealerCardValue, dealerScore);
-            string expected = "Player: Clubs Ace (11)\r\n\r\nDealer: Clubs Five (22)\r\n\r\nPlayer wins!!\r\n";
+            string expected = "Player: Clubs Ace (11)\r\n\r\nDealer: Clubs Five (22) BUSTED!\r\n\r\nPlayer wins!!\r\n";
             sut.RenderResultOfGame(mockHands.Object);
             string actual = output.ToString();
             Assert.Equal(expected, actual);
@@ -210,7 +210,7 @@ namespace BlackjackTest.View
         {
             CollectConsoleOutput();
             MockHands(playerCardValue, playerScore, dealerCardValue, dealerScore);
-            string expected = "Player: Clubs Five (11)\r\n\r\nDealer: Clubs Ace (22) BUSTED!\r\n\r\nDealer wins!!\r\n";
+            string expected = "Player: Clubs Five (11)\r\n\r\nDealer: Clubs Ace (22) BUSTED!\r\n\r\nPlayer wins!!\r\n";
             sut.RenderResultOfGame(mockHands.Object);
             string actual = output.ToString();
             Assert.Equal(expected, actual);
