@@ -8,16 +8,18 @@ namespace Blackjack.Model
     {
         private IDealer Dealer { get; set; }
         private IPlayer Player { get; set; }
+        private IHandsFactory Factory {get; set;}
 
         internal int blackjackScore = 21;
         internal bool gameIsOver = true;
         internal bool gameIsNotOver = false;
         internal bool playerHasStayed = false;
 
-        public BlackjackGame(IDealer dealer, IPlayer player)
+        public BlackjackGame(IDealer dealer, IPlayer player, IHandsFactory factory)
         {
             Dealer = dealer;
             Player = player;
+            Factory = factory;
         }
 
         public void DealNewHand()

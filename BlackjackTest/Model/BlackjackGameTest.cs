@@ -10,6 +10,7 @@ namespace BlackjackTest.Model
     public class BlackjackGameTest
     {
         private IBlackjackGame sut;
+        private Mock<IHandsFactory> mockFactory;
         private Mock<IDealer> mockDealer;
         private Mock<IPlayer> mockPlayer;
 
@@ -17,7 +18,8 @@ namespace BlackjackTest.Model
         {
             mockDealer = new Mock<IDealer>();
             mockPlayer = new Mock<IPlayer>();
-            sut = new BlackjackGame(mockDealer.Object, mockPlayer.Object);
+            mockFactory = new Mock<IHandsFactory>();
+            sut = new BlackjackGame(mockDealer.Object, mockPlayer.Object, mockFactory.Object);
         }
 
         private void GetCurrentPlayerScore(int scoreToReturn)
@@ -159,6 +161,14 @@ namespace BlackjackTest.Model
         {
             sut.GetHands();
             mockDealer.Verify(dealer => dealer.Hand, Times.Once());
+        }
+
+        [Fact]
+        public void GetHands_ShouldCallToCreateANewHandsObject()
+        {
+            sut.GetHands();
+            mockFactory.Verify(factory => factory.CreateNewHands(It.IsAny<IReadOnlyList<ICard>>(), 
+                It.IsAny<int>(), It.IsAny<IReadOnlyList<ICard>>(), It.IsAny<int>()), Times.Once());
         }
 
         [Fact]
