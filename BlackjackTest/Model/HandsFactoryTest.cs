@@ -9,6 +9,7 @@ namespace BlackjackTest.Model
 {
     public class HandsFactoryTest
     {
+
         [Fact]
         public void CreateNewHands_ShouldReturnANewHandsObject()
         {
