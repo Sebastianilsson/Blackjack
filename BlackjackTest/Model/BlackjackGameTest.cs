@@ -167,8 +167,8 @@ namespace BlackjackTest.Model
         public void GetHands_ShouldCallToCreateANewHandsObject()
         {
             sut.GetHands();
-            mockFactory.Verify(factory => factory.CreateNewHands(It.IsAny<IReadOnlyList<ICard>>(), 
-                It.IsAny<int>(), It.IsAny<IReadOnlyList<ICard>>(), It.IsAny<int>()), Times.Once());
+            mockFactory.Verify(factory => factory.CreateNewHands(It.IsAny<IReadOnlyList<ICard>>()
+                , It.IsAny<int>(), It.IsAny<IReadOnlyList<ICard>>(), It.IsAny<int>()), Times.Once());
         }
 
         [Fact]
