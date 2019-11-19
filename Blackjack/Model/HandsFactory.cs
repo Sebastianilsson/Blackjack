@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Blackjack.Model
 {
-    public class HandsFactory
+    public class HandsFactory : IHandsFactory
     {
         public IHands CreateNewHands(IReadOnlyList<ICard> playerCards, int playerScore, IReadOnlyList<ICard> dealerCards, int dealerScore)
         {
